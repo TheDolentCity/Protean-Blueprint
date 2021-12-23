@@ -1,5 +1,5 @@
 <script>
-    import { brightness, temperature } from '../../stores/themeStore';
+    import { brightness, temperature } from '../../lib/stores/themeStore';
 </script>
 
 <div class="card"

@@ -1,5 +1,5 @@
 <script>
-    import { brightness } from '../stores/themeStore';
+    import { brightness } from '../lib/stores/themeStore';
 </script>
 
 <div class={$brightness == "dark" ? "dark" : ""}>

@@ -1,5 +1,5 @@
 <script>
-	import { brightness } from '../../../stores/themeStore';
+	import { brightness } from '../../../lib/stores/themeStore';
 	import { BrightnessHighFill, MoonFill } from 'svelte-bootstrap-icons';
 
 	function toggleDarkMode() {
