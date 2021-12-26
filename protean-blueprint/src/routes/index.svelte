@@ -1,6 +1,6 @@
 <script>
-    import Blueprint from "..//components/composed/blueprint/blueprint.svelte";
-    import CommandBar from "../components/composed/commandBar.svelte";
+    import Blueprint from "../components/composed/blueprint/blueprint.svelte";
+    import CommandBar from "../components/composed/commands/commandBar.svelte";
     import FileExplorer from "../components/composed/files/fileExplorer.svelte";
 </script>
 
@@ -11,4 +11,3 @@
 <CommandBar />
 <FileExplorer />
 <Blueprint />
-<CommandBar />
