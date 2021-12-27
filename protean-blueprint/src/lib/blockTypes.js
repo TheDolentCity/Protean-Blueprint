@@ -1,4 +1,5 @@
 export class BlockType {
+    static Root = new BlockType('Root');
     static SectionFull = new BlockType('SectionFull');
     static SectionHalf = new BlockType('SectionHalf');
     static Header1 = new BlockType('Header1');

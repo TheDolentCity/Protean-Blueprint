@@ -1,11 +1,14 @@
 import { writable, derived } from 'svelte/store';
 import { BlockType } from "$lib/blockTypes";
 
-export const activeFileIndex = writable(0);
+export const activeFile = writable({
+    content: "Initial"
+});
 export const files = writable(
 [
     {
         id: "Uuid1",
+        type: BlockType.Root,
         meta:
         {
             name: "FileName",
@@ -37,8 +40,8 @@ export const files = writable(
                 [
                     {
                         id: "Uuid8",
-                        type: BlockType.Header1,
-                        content: "Header 1"
+                        type: BlockType.Header2,
+                        content: "Header 2"
                     },
                     {
                         id: "Uuid9",
@@ -54,8 +57,8 @@ export const files = writable(
                 [
                     {
                         id: "Uuid10",
-                        type: BlockType.Header1,
-                        content: "Header 1"
+                        type: BlockType.Header3,
+                        content: "Header 3"
                     },
                     {
                         id: "Uuid11",
@@ -71,8 +74,8 @@ export const files = writable(
                 [
                     {
                         id: "Uuid12",
-                        type: BlockType.Header1,
-                        content: "Header 1"
+                        type: BlockType.Header4,
+                        content: "Header 4"
                     },
                     {
                         id: "Uuid13",
@@ -84,10 +87,4 @@ export const files = writable(
         ]
     },
 ]
-);
-export const activeFile = derived(
-    [activeFileIndex, files],
-    ([$activeFileIndex, $files]) => {
-        return $files[$activeFileIndex];
-    }
 );

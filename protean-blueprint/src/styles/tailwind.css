@@ -35,6 +35,9 @@
     .body-strong {
         @apply text-base text-base-900 dark:text-base-100 font-semibold;
     }
+    .command {
+        @apply flex relative p-3 items-center justify-center font-semibold rounded-lg shadow-lg text-base-900 dark:text-base-100 active:text-opacity-50 motion-safe:transition motion-safe:duration-200;
+    }
 }
 
 @layer utilities {
