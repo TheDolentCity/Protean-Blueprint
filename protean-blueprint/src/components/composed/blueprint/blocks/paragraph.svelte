@@ -2,8 +2,8 @@
     export let block;
 </script>
 
-<input 
+<textarea
     bind:value={block.content}
-    type="text"
+    rows={2}
     placeholder="Begin typing..."
-    class="type-display block-input" />
+    class="type-body block-input" />

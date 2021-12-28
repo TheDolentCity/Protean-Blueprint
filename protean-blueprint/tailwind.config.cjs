@@ -15,6 +15,7 @@ module.exports = {
     extend: {
       colors: {
         'base': colors.zinc,
+        'accent': colors.sky
       }
     },
   },

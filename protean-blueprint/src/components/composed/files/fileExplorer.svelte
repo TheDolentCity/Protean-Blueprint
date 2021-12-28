@@ -11,11 +11,11 @@
 	{#each $files as file (file.id)}
 		<button
 			on:click={setActiveFile(file)}
-			class={$activeFile.id === file.id
-				? 'px-3 py-2 bg-white dark:bg-black rounded-xl shadow-xl border border-base-200 dark:border-base-800 motion-safe:transition motion-safe:duration-200'
-				: 'px-3 py-2 bg-base-100 dark:bg-base-900 rounded-xl shadow-xl border border-base-200 dark:border-base-800 motion-safe:transition motion-safe:duration-200'}
+			class={$activeFile && $activeFile.id === file.id
+				? 'px-3 py-2 bg-white dark:bg-black rounded-xl shadow-xl text-left border border-base-200 dark:border-base-800 mst'
+				: 'px-3 py-2 bg-base-100 dark:bg-base-900 rounded-xl shadow-xl text-left border border-base-200 dark:border-base-800 mst'}
 		>
-			<p class="body-strong">{file.meta.name}</p>
+			<p class="type-body-strong">{file.meta.name}</p>
 			<p>{file.meta.description}</p>
 		</button>
 	{/each}

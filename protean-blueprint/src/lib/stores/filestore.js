@@ -1,9 +1,7 @@
 import { writable, derived } from 'svelte/store';
 import { BlockType } from "$lib/blockTypes";
 
-export const activeFile = writable({
-    content: "Initial"
-});
+export const activeFile = writable(null);
 export const files = writable(
 [
     {

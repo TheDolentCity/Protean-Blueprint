@@ -6,4 +6,4 @@
     bind:value={block.content}
     type="text"
     placeholder="Begin typing..."
-    class="type-display block-input" />
+    class="type-body-large block-input" />
