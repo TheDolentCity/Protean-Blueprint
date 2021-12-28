@@ -63,20 +63,23 @@
     }
 
     .btn {
-        @apply flex items-center font-semibold shadow-lg active:text-opacity-50 mst;
+        @apply flex items-center font-semibold active:text-opacity-50 mst;
     }
     .btn-icon {
-        @apply p-3 rounded-lg justify-center;
+        @apply p-2 rounded-lg justify-center;
     }
     .btn-text {
         @apply px-3 py-1.5 rounded;
     }
     .btn-primary {
-        @apply btn bg-base-100 dark:bg-base-900 text-base-900 dark:text-base-100;
+        @apply btn bg-base-100 dark:bg-base-900 text-base-900 dark:text-base-100 border border-base-200 dark:border-base-800;
     }
     .btn-accent {
-        @apply btn bg-accent-600 dark:bg-accent-600 text-base-100 dark:text-base-100;
+        @apply btn bg-accent-600 dark:bg-accent-600 text-base-100 dark:text-base-100 border border-accent-700 dark:border-accent-700;
     }
+		.btn-stealth {
+			@apply btn hover:bg-black hover:dark:bg-white hover:bg-opacity-5;
+		}
 }
 
 @layer utilities {

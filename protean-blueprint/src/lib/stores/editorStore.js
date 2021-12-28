@@ -1,3 +1,3 @@
-import { writable, derived } from 'svelte/store';
+import { writable } from 'svelte/store';
 
-export const editing = writable(true);
+export const editing = writable(false);

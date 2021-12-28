@@ -1,12 +1,7 @@
-export class BlockType {
-    static Root = new BlockType('Root');
-    static SectionFull = new BlockType('SectionFull');
-    static SectionHalf = new BlockType('SectionHalf');
-    static Header1 = new BlockType('Header1');
-    static Header2 = new BlockType('Header2');
-    static Header3 = new BlockType('Header3');
-    static Header4 = new BlockType('Header4');
-    static Paragraph = new BlockType('Paragraph');
+export class BlockTypes {
+    static Root = new BlockTypes('Root');
+    static Section = new BlockTypes('Section');
+    static Text = new BlockTypes('Text');
 
     constructor(name) {
         this.name = name;
