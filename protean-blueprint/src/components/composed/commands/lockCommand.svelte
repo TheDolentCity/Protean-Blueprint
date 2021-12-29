@@ -24,8 +24,8 @@
 	on:click={toggleDarkMode}
 	on:click={toggleDarkMode}
 	class={$locked ? 
-			"command bg-gradient-to-b from-stone-300 via-stone-200 to-stone-400 dark:from-stone-900 dark:via-orange-700 dark:to-orange-700" :
-			"command bg-gradient-to-tr from-red-600 via-red-300 to-red-100 dark:from-slate-700 dark:via-slate-500 dark:to-slate-500"}
+			"command bg-gradient-to-b from-stone-300 via-stone-200 to-stone-400 dark:from-stone-600 dark:via-stone-500 dark:to-stone-800" :
+			"command bg-gradient-to-tr from-red-600 via-red-300 to-red-100 dark:from-red-900 dark:via-red-500 dark:to-red-300"}
 	transition:fade
 >
 	{#if $locked}
