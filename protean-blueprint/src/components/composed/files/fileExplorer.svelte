@@ -6,7 +6,7 @@
 	};
 </script>
 
-<div class="flex-auto flex flex-col py-2 space-y-2">
+<div class="flex-none flex flex-col w-80 py-2 space-y-2">
 	<h3 class="sticky mb-3">Files</h3>
 	{#each $files as file (file.id)}
 		<button

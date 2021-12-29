@@ -5,85 +5,103 @@
 @tailwind utilities;
 
 @layer base {
-    html {
-        font-size: 100%;
-    }
-    h1 {
-        @apply type-display;
-    }
-    h2 {
-        @apply type-title-large;
-    }
-    h3 {
-        @apply type-title;
-    }
-    h4 {
-        @apply type-subtitle;
-    }
-    h5 {
-        @apply type-body-large;
-    }
-    p {
-        @apply type-body;
-    }
-    span {
-        @apply type-body;
-    }
+	html {
+		font-size: 100%;
+	}
+
+	h1 {
+		@apply type-display;
+	}
+
+	h2 {
+		@apply type-title-large;
+	}
+
+	h3 {
+		@apply type-title;
+	}
+
+	h4 {
+		@apply type-subtitle;
+	}
+
+	h5 {
+		@apply type-body-large;
+	}
+
+	p {
+		@apply type-body;
+	}
+
+	span {
+		@apply type-body;
+	}
 }
 
 @layer components {
-    .type-display {
-        @apply text-[4.5rem] leading-[5.75rem] text-base-900 dark:text-base-100 font-semibold;
-    }
-    .type-title-large {
-        @apply text-[2.5rem] leading-[3.25rem] text-base-900 dark:text-base-100 font-semibold;
-    }
-    .type-title {
-        @apply text-[1.75rem] leading-[2.25rem] text-base-900 dark:text-base-100 font-semibold;
-    }
-    .type-subtitle {
-        @apply text-[1.25rem] leading-[1.75rem] text-base-900 dark:text-base-100 font-semibold;
-    }
-    .type-body-large {
-        @apply text-[1.125rem] leading-[1.5rem] text-base-900 dark:text-base-100;
-    }
-    .type-body-strong {
-        @apply text-base text-base-900 dark:text-base-100 font-semibold leading-normal;
-    }
-    .type-body {
-        @apply text-base text-base-600 dark:text-base-400 font-normal leading-normal;
-    }
+	.type-display {
+		@apply text-[4.5rem] leading-[5.75rem] text-base-900 dark:text-base-100 font-semibold;
+	}
 
-    .command {
-        @apply flex relative p-3 items-center justify-center font-semibold rounded-lg shadow-lg text-base-900 dark:text-base-100 active:text-opacity-50 mst;
-    }
+	.type-title-large {
+		@apply text-[2.5rem] leading-[3.25rem] text-base-900 dark:text-base-100 font-semibold;
+	}
 
-    .block-input {
-        @apply p-2 rounded bg-white dark:bg-black hover:bg-base-100 hover:dark:bg-base-900 focus:bg-base-200 focus:dark:bg-base-800 focus:outline-none mst;
-    }
+	.type-title {
+		@apply text-[1.75rem] leading-[2.25rem] text-base-900 dark:text-base-100 font-semibold;
+	}
 
-    .btn {
-        @apply flex items-center font-semibold active:text-opacity-50 mst;
-    }
-    .btn-icon {
-        @apply p-2 rounded-lg justify-center;
-    }
-    .btn-text {
-        @apply px-3 py-1.5 rounded;
-    }
-    .btn-primary {
-        @apply btn bg-base-100 dark:bg-base-900 text-base-900 dark:text-base-100 border border-base-200 dark:border-base-800;
-    }
-    .btn-accent {
-        @apply btn bg-accent-600 dark:bg-accent-600 text-base-100 dark:text-base-100 border border-accent-700 dark:border-accent-700;
-    }
-		.btn-stealth {
-			@apply btn hover:bg-black hover:dark:bg-white hover:bg-opacity-5;
-		}
+	.type-subtitle {
+		@apply text-[1.25rem] leading-[1.75rem] text-base-900 dark:text-base-100 font-semibold;
+	}
+
+	.type-body-large {
+		@apply text-[1.125rem] leading-[1.5rem] text-base-900 dark:text-base-100;
+	}
+
+	.type-body-strong {
+		@apply text-base text-base-900 dark:text-base-100 font-semibold leading-normal;
+	}
+
+	.type-body {
+		@apply text-base text-base-600 dark:text-base-400 font-normal leading-normal;
+	}
+
+	.command {
+		@apply flex relative p-3 items-center justify-center font-semibold rounded-lg shadow-lg text-base-900 dark:text-base-100 active:text-opacity-50 mst;
+	}
+
+	.block-input {
+		@apply p-2 rounded bg-white dark:bg-black hover:bg-base-100 hover:dark:bg-base-900 focus:bg-base-200 focus:dark:bg-base-800 focus:outline-none mst;
+	}
+
+	.btn {
+		@apply flex items-center font-semibold active:text-opacity-50 mst;
+	}
+
+	.btn-icon {
+		@apply p-2 rounded-lg justify-center;
+	}
+
+	.btn-text {
+		@apply px-3 py-1.5 rounded;
+	}
+
+	.btn-primary {
+		@apply btn bg-base-100 dark:bg-base-900 text-base-900 dark:text-base-100 border border-base-200 dark:border-base-800;
+	}
+
+	.btn-accent {
+		@apply btn bg-accent-600 dark:bg-accent-600 text-base-100 dark:text-base-100 border border-accent-700 dark:border-accent-700;
+	}
+
+	.btn-stealth {
+		@apply btn hover:bg-black hover:dark:bg-white hover:bg-opacity-5 hover:dark:bg-opacity-5;
+	}
 }
 
 @layer utilities {
-    .mst {
-        @apply motion-safe:transition motion-safe:duration-200;
-    }
+	.mst {
+		@apply motion-safe:transition motion-safe:duration-200;
+	}
 }

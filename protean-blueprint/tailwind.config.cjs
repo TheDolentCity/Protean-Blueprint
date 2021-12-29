@@ -16,7 +16,15 @@ module.exports = {
       colors: {
         'base': colors.zinc,
         'accent': colors.sky
-      }
+      },
+			width: {
+        'screen-xs': '30rem', // 480px
+        'screen-sm': '40rem', // 640px
+        'screen-md': '48rem', // 768px
+        'screen-lg': '64rem', // 1024px
+        'screen-xl': '80rem', // 1280px
+        'screen-2xl': '96rem', // 1536px
+      },
     },
   },
   plugins: [

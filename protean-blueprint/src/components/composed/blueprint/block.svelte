@@ -1,10 +1,10 @@
 <script>
 	import { editing } from '$lib/stores/editorStore';
-	import { BlockTypes } from '$lib/blockTypes';
+	import { BlockTypes } from '$lib/enums/blockTypes';
 	import Blocks from './blocks.svelte';
 	import EditBlock from './editBlock.svelte';
 	import BlockText from './blocks/blockText.svelte';
-import { SectionTypes } from '$lib/sectionTypes';
+import { SectionTypes } from '$lib/enums/sectionTypes';
 
 	export let block;
 

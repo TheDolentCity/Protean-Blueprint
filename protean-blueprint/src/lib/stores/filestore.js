@@ -1,7 +1,8 @@
 import { writable, derived } from 'svelte/store';
-import { BlockTypes } from "$lib/blockTypes";
-import { TextTypes } from '$lib/textTypes';
-import { SectionTypes } from '$lib/sectionTypes';
+import { BlockTypes } from "$lib/enums/blockTypes";
+import { TextTypes } from '$lib/enums/textTypes';
+import { SectionTypes } from '$lib/enums/sectionTypes';
+import { TextAlignments } from '$lib/enums/textAlignments';
 
 export const activeFile = writable(null);
 export const files = writable(
@@ -28,7 +29,8 @@ export const files = writable(
 									id: "Uuid6",
 									type: BlockTypes.Text,
 									meta: {
-										type: TextTypes.H1
+										type: TextTypes.H1,
+										align: TextAlignments.Left
 									},
 									content: "Header 1"
 								},
@@ -36,7 +38,8 @@ export const files = writable(
 									id: "Uuid7",
 									type: BlockTypes.Text,
 									meta: {
-										type: TextTypes.P
+										type: TextTypes.P,
+										align: TextAlignments.Left
 									},
 									content: "This is a test paragraph to try and show off how this will render when there is a decent chunk of text inside of the block."
 								},
@@ -54,7 +57,8 @@ export const files = writable(
 									id: "Uuid8",
 									type: BlockTypes.Text,
 									meta: {
-										type: TextTypes.H2
+										type: TextTypes.H2,
+										align: TextAlignments.Left
 									},
 									content: "Header 2"
 								},
@@ -62,7 +66,8 @@ export const files = writable(
 									id: "Uuid9",
 									type: BlockTypes.Text,
 									meta: {
-										type: TextTypes.P
+										type: TextTypes.P,
+										align: TextAlignments.Left
 									},
 									content: "This is a test paragraph to try and show off how this will render when there is a decent chunk of text inside of the block."
 								},
@@ -80,7 +85,8 @@ export const files = writable(
 									id: "Uuid10",
 									type: BlockTypes.Text,
 									meta: {
-										type: TextTypes.H3
+										type: TextTypes.H3,
+										align: TextAlignments.Left
 									},
 									content: "Header 3"
 								},
@@ -88,7 +94,8 @@ export const files = writable(
 									id: "Uuid11",
 									type: BlockTypes.Text,
 									meta: {
-										type: TextTypes.P
+										type: TextTypes.P,
+										align: TextAlignments.Left
 									},
 									content: "This is a test paragraph to try and show off how this will render when there is a decent chunk of text inside of the block."
 								},
@@ -106,7 +113,8 @@ export const files = writable(
 									id: "Uuid12",
 									type: BlockTypes.Text,
 									meta: {
-										type: TextTypes.H4
+										type: TextTypes.H4,
+										align: TextAlignments.Left
 									},
 									content: "Header 4"
 								},
@@ -114,7 +122,8 @@ export const files = writable(
 									id: "Uuid13",
 									type: BlockTypes.Text,
 									meta: {
-										type: TextTypes.P
+										type: TextTypes.P,
+										align: TextAlignments.Left
 									},
 									content: "This is a test paragraph to try and show off how this will render when there is a decent chunk of text inside of the block."
 								},

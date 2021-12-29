@@ -1,5 +1,5 @@
 <script>
-	import { BlockTypes } from '$lib/blockTypes';
+	import { BlockTypes } from '$lib/enums/blockTypes';
 	import { Arrow90degLeft, ArrowDown, ArrowReturnLeft, ArrowUp } from 'svelte-bootstrap-icons';
 
 	export let block;
