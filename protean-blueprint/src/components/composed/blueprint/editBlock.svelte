@@ -36,16 +36,16 @@
 		</option>
 	</select>
 	<div class="flex space-x-2">
-		<button class="btn-primary btn-icon">
+		<button class="btn-secondary btn-icon">
 			<ArrowUp />
 		</button>
-		<button class="btn-primary btn-icon">
+		<button class="btn-secondary btn-icon">
 			<ArrowDown />
 		</button>
-		<button class="btn-primary btn-icon">
+		<button class="btn-secondary btn-icon">
 			<Arrow90degLeft />
 		</button>
-		<button class="btn-primary btn-icon">
+		<button class="btn-secondary btn-icon">
 			<ArrowReturnLeft />
 		</button>
 	</div>

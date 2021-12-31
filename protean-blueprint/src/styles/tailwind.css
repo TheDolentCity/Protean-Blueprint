@@ -72,7 +72,7 @@
 	}
 
 	.block-input {
-		@apply p-2 rounded bg-white dark:bg-black hover:bg-base-100 hover:dark:bg-base-900 focus:bg-base-200 focus:dark:bg-base-800 focus:outline-none mst;
+		@apply p-2 rounded outline-none bg-white dark:bg-black hover:bg-base-100 hover:dark:bg-base-900 focus:bg-base-200 focus:dark:bg-base-800 focus:outline-none mst;
 	}
 
 	.btn {
@@ -88,6 +88,10 @@
 	}
 
 	.btn-primary {
+		@apply btn bg-black dark:bg-base-100 text-base-100 dark:text-base-900 border border-base-800 dark:border-base-200;
+	}
+
+	.btn-secondary {
 		@apply btn bg-base-100 dark:bg-base-900 text-base-900 dark:text-base-100 border border-base-200 dark:border-base-800;
 	}
 
@@ -102,6 +106,6 @@
 
 @layer utilities {
 	.mst {
-		@apply motion-safe:transition motion-safe:duration-200;
+		@apply motion-safe:transition-all motion-safe:duration-200;
 	}
 }

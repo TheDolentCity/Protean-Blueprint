@@ -1,17 +1,17 @@
 <script>
-    import Block from "./block.svelte";
+	import Block from "./block.svelte";
 
-    export let blocks;
+	export let blocks;
 
-    const isValidBlocks = () => {
-        return blocks && Array.isArray(blocks);
-    }
+	const isValidBlocks = () => {
+		return blocks && Array.isArray(blocks);
+	}
 </script>
 
 {#if !isValidBlocks()}
-    <span class="">Error!</span>
+	<span class="">Error!</span>
 {:else}
-    {#each blocks as block}
-        <Block bind:block={block} />
-    {/each}
+	{#each blocks as block}
+		<Block bind:block={block} />
+	{/each}
 {/if}

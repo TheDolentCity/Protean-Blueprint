@@ -6,33 +6,62 @@
 	import { TextTypes } from '$lib/enums/textTypes';
 	import { TextAlignments } from '$lib/enums/textAlignments';
 	import { ColumnTypes } from '$lib/enums/columnTypes';
-	import { Justify, TextCenter, TextLeft, TextRight } from 'svelte-bootstrap-icons';
+	import { ArrowLeftShort, ArrowRightShort, Justify, Plus, PlusLg, PlusSquare, TextCenter, TextLeft, TextRight } from 'svelte-bootstrap-icons';
+	import HorizontalAddBlock from './horizontalAddBlock.svelte';
 
 	export let block;
 
+	$: editBoxVisible = false;
 	$: editBarVisible = false;
 
-	const setEditBarVisible = () => {
-		editBarVisible = true;
+	const previousPosition = () => {
+		switch (block.meta.columns) {
+			case ColumnTypes.Full: 
+				return block.meta.position;
+			case ColumnTypes.Half: 
+				return block.meta.position - 1 < 0 ? 1 : block.meta.position - 1;
+			case ColumnTypes.Third: 
+				return block.meta.position - 1 < 0 ? 2 : block.meta.position - 1;
+			case ColumnTypes.Fourth: 
+				return block.meta.position - 1 < 0 ? 3 : block.meta.position - 1;
+		}
 	}
 
-	const setEditBarInvisible = () => {
-		editBarVisible = false;
+	const nextPosition = () => {
+		switch (block.meta.columns) {
+			case ColumnTypes.Full:
+				return block.meta.position;
+			case ColumnTypes.Half: 
+				return block.meta.position + 1 > 1 ? 0 : block.meta.position + 1;
+			case ColumnTypes.Third: 
+				return block.meta.position + 1 > 2 ? 0 : block.meta.position + 1;
+			case ColumnTypes.Fourth: 
+				return block.meta.position + 1 > 3 ? 0 : block.meta.position + 1;
+		}
+	}
+
+	const focus = (e, boxVisible) => {
+		editBoxVisible = boxVisible;
+		e.preventDefault();
 	}
 
 	$: containerCss = () => {
 		return new CssBuilder()
-			.addClass('relative w-full flex justify-center')
+			.addClass('isolation relative flex justify-center border border-opacity-0 outline-none mst')
+			.addClass('focus:border-opacity-100 focus:border-accent-500 dark:focus:border-accent-700', $editing && editBoxVisible)
 			.addClass('col-span-12', block.meta.columns === ColumnTypes.Full)
-			.addClass('col-span-6', block.meta.columns === ColumnTypes.Half)
 			.addClass('col-span-4', block.meta.columns === ColumnTypes.Third)
 			.addClass('col-span-3', block.meta.columns === ColumnTypes.Fourth)
+			.addClass('col-start-1 col-end-6', block.meta.columns === ColumnTypes.Half && block.meta.position === 0)
+			.addClass('col-start-7 col-end-12', block.meta.columns === ColumnTypes.Half && block.meta.position === 1)
 			.build();
 	};
 
 	$: inputCss = () => {
 		return new CssBuilder()
-			.addClass('block-input w-full resize-none')
+			.addClass('w-full resize-none outline-none')
+			.addClass('block-input', !$editing)
+			.addClass('p-2 rounded bg-white dark:bg-black', $editing)
 			.addClass('type-display', block.meta.type === TextTypes.H1)
 			.addClass('type-title-large', block.meta.type === TextTypes.H2)
 			.addClass('type-title', block.meta.type === TextTypes.H3)
@@ -48,13 +77,27 @@
 	};
 </script>
 
-<div on:mouseenter={setEditBarVisible} on:mouseleave={setEditBarInvisible} class={containerCss()}>
+<div tabindex="0" on:focus={(e) => focus(e, true)} on:focusout={(e) => focus(e, false)} class={containerCss()}>
+	{#if $editing && editBoxVisible}
+		<div in:fade="{{ duration: 200 }}" out:fade="{{ duration: 200 }}" class="absolute left-0 px-1 py-0.5 text-xs bg-accent-500 dark:bg-accent-700 text-white">
+			Text block
+		</div>
+	{/if}
 	{#if $editing && editBarVisible}
 		<div in:fade="{{ duration: 100 }}" out:fade="{{ duration: 100 }}" class="absolute bottom-full flex flex-wrap z-10 p-2 rounded-xl shadow-lg bg-white dark:bg-base-900 border border-base-200 dark:border-base-800">
 			<button on:click={() => block.meta.columns = ColumnTypes.Full} class="btn-stealth btn-icon diagonal-fractions">1/1</button>
 			<button on:click={() => block.meta.columns = ColumnTypes.Half} class="btn-stealth btn-icon diagonal-fractions">1/2</button>
 			<button on:click={() => block.meta.columns = ColumnTypes.Third} class="btn-stealth btn-icon diagonal-fractions">1/3</button>
 			<button on:click={() => block.meta.columns = ColumnTypes.Fourth} class="btn-stealth btn-icon diagonal-fractions">1/4</button>
+	
+			<!-- <div class="w-0.5 px-0.5 bg-base-200 dark:bg-base-800" /> -->
+
+			<button on:click={() => block.meta.position = 1} class="btn-stealth btn-icon">
+				<ArrowLeftShort />
+			</button>
+			<button on:click={() => block.meta.position = 2} class="btn-stealth btn-icon">
+				<ArrowRightShort />
+			</button>
 	
 			<!-- <div class="w-0.5 px-0.5 bg-base-200 dark:bg-base-800" /> -->
 			

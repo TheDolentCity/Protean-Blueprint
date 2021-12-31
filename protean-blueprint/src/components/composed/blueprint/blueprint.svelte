@@ -1,14 +1,25 @@
 <script>
-    import Block from './block.svelte';
-    import { activeFile } from '$lib/stores/fileStore';
+	import Block from './block.svelte';
+	import { activeFile, files } from '$lib/stores/fileStore';
 
-    // $: console.log(JSON.stringify($activeFile, null, 2));
+	$: $activeFile, updateFilesStore();
+	
+	const updateFilesStore = () => {
+		console.log("updateFilesStore");
+		let activeIndex = $files.findIndex(f => f.id === $activeFile.id);
+		console.log("updateFilesStore:activeIndex:" + activeIndex);
+		if (activeIndex != -1) {
+			$files[activeIndex] = $activeFile;
+		}
+	}
 </script>
 
 {#if $activeFile}
-    <div class="flex-grow grid grid-cols-12 h-full max-h-full overflow-y-auto rounded-xl shadow-xl bg-white dark:bg-black border border-base-200 dark:border-base-800 motion-safe:transition motion-safe:duration-200">
-        <Block bind:block={$activeFile} />
-    </div>
+	<div class="flex-grow grid grid-cols-12 h-full max-h-full content-start overflow-y-auto rounded-xl shadow-xl bg-white dark:bg-black border border-base-200 dark:border-base-800 mst">
+		<Block bind:block={$activeFile} />
+	</div>
 {:else}
-    <h1>No Active File</h1>
+	<div class="flex-grow flex h-full max-h-full justify-center items-center border border-base-200 dark:border-base-800 mst">
+		<h2>No active file</h2>
+	</div>
 {/if}
