@@ -15,7 +15,7 @@ module.exports = {
     extend: {
       colors: {
         'base': colors.zinc,
-        'accent': colors.sky
+        'accent': colors.blue
       },
 			width: {
         'screen-xs': '30rem', // 480px

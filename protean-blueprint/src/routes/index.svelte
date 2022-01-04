@@ -1,7 +1,8 @@
 <script>
-    import Blueprint from "../components/composed/blueprint/blueprint.svelte";
-    import CommandBar from "../components/composed/commands/commandBar.svelte";
-    import FileExplorer from "../components/composed/files/fileExplorer.svelte";
+	import BlockEditor from "../components/composed/blueprint/blockEditor.svelte";
+	import Blueprint from "../components/composed/blueprint/blueprint.svelte";
+	import CommandBar from "../components/composed/commands/commandBar.svelte";
+	import FileExplorer from "../components/composed/files/fileExplorer.svelte";
 </script>
 
 <svelte:head>
@@ -11,3 +12,4 @@
 <CommandBar />
 <FileExplorer />
 <Blueprint />
+<BlockEditor />

@@ -3,8 +3,8 @@
 	import { ColumnTypes } from '$lib/enums/columnTypes';
 	import HorizontalAddBlock from './horizontalAddBlock.svelte';
 	import Block from '../block.svelte';
-	import { editing } from '$lib/stores/editorStore';
-	import { fade } from 'svelte/transition';
+import { editing } from '$lib/stores/editorStore';
+import { fade } from 'svelte/transition';
 
 	export let block;
 
@@ -37,7 +37,7 @@
 
 	$: sectionCss = () => {
 		return new CssBuilder()
-			.addClass('grid grid-cols-12 w-full p-4 border-t border-base-200 dark:border-base-800 mst')
+			.addClass('flex flex-col w-full p-4 border-t border-base-200 dark:border-base-800 mst')
 			.build();
 	};
 </script>

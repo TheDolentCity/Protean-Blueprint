@@ -44,38 +44,22 @@
 			Add block
 		</span>
 		{#if blockBarVisible}
-			<div use:clickOutside on:click_outside={() => blockBarVisible = false} in:fly="{{ y: -50, duration: 200 }}" out:fly="{{ y: -50, duration: 200 }}" class="absolute z-30 top-12 grid grid-cols-4 gap-2 p-2 rounded-xl shadow-xl bg-white dark:bg-black border border-base-200 dark:border-base-800">
+			<div use:clickOutside on:click_outside={() => blockBarVisible = false} in:fly="{{ y: -50, duration: 200 }}" out:fly="{{ y: -50, duration: 200 }}" class="absolute z-30 top-8 grid grid-cols-4 gap-2 p-2 rounded-xl shadow-xl bg-white dark:bg-black border border-base-200 dark:border-base-800">
 				<button on:click={() => createBlock(BlockTypes.Text)} class="btn-stealth btn-icon flex-col justify-center">
 					<Type />
-					Text
+					<span class="mt-1 font-semibold type-focus">Text</span>
 				</button>
 				<button on:click={() => createBlock(BlockTypes.Text)} class="btn-stealth btn-icon flex-col justify-center">
 					<Link />
-					Link
+					<span class="mt-1 font-semibold type-focus">Link</span>
 				</button>
 				<button on:click={() => createBlock(BlockTypes.Text)} class="btn-stealth btn-icon flex-col justify-center">
 					<UiChecks />
-					Checks
+					<span class="mt-1 font-semibold type-focus">Checks</span>
 				</button>
 				<button on:click={() => createBlock(BlockTypes.Text)} class="btn-stealth btn-icon flex-col justify-center">
 					<UiRadios />
-					Radio
-				</button>
-				<button on:click={() => createBlock(BlockTypes.Text)} class="btn-stealth btn-icon flex-col justify-center">
-					<Type />
-					Text
-				</button>
-				<button on:click={() => createBlock(BlockTypes.Text)} class="btn-stealth btn-icon flex-col justify-center">
-					<Link />
-					Link
-				</button>
-				<button on:click={() => createBlock(BlockTypes.Text)} class="btn-stealth btn-icon flex-col justify-center">
-					<UiChecks />
-					Checks
-				</button>
-				<button on:click={() => createBlock(BlockTypes.Text)} class="btn-stealth btn-icon flex-col justify-center">
-					<UiRadios />
-					Radio
+					<span class="mt-1 font-semibold type-focus">Radio</span>
 				</button>
 			</div>
 		{/if}

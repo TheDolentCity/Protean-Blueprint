@@ -5,9 +5,7 @@
 	$: $activeFile, updateFilesStore();
 	
 	const updateFilesStore = () => {
-		console.log("updateFilesStore");
 		let activeIndex = $files.findIndex(f => f.id === $activeFile.id);
-		console.log("updateFilesStore:activeIndex:" + activeIndex);
 		if (activeIndex != -1) {
 			$files[activeIndex] = $activeFile;
 		}

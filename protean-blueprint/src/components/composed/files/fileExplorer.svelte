@@ -7,7 +7,6 @@
 	import { ColumnTypes } from '$lib/enums/columnTypes';
 
 	const setActiveFile = (file) => {
-		console.log("setActiveFile:fileId:" + file.id);
 		$activeFile = file;
 	};
 
@@ -36,10 +35,10 @@
 			.build();
 	};
 
-	$: $files, console.log($files);
+	$: $activeFile, console.log($activeFile);
 </script>
 
-<div class="w-80">
+<div class="flex-none w-80">
 	<div class="flex w-full mb-3 items-center justify-between">
 		<h3>Files</h3>
 		<button on:click={createFile} class="btn-stealth btn-icon">

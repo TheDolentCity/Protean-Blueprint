@@ -1,10 +1,10 @@
 export function treeContains(node, root) {
-	return treeRead(n => n?.uuid && n?.uuid === node.uuid, root) ? true : false;
+	return treeRead(n => n?.id && n?.id === node.id, root) ? true : false;
 };
 
-export function treeCreate(node, root, parentUuid = null) {
-	if (parentUuid) {
-		parentUuid.content.push(node);
+export function treeCreate(node, root, parentId = null) {
+	if (parentId) {
+		parentId.content.push(node);
 	}
 	else {
 		if (!root) {
@@ -31,17 +31,17 @@ export function treeRead(fn, root) {
 };
 
 export function treeUpdate(node, root) {
-	let found = treeRead(n => n?.uuid && n?.uuid === node.uuid, root);
+	let found = treeRead(n => n?.id && n?.id === node.id, root);
 	if (found) {
-		console.log("treeUpdate:found:" + found);
-		console.log("treeUpdate:node:" + node);
+		console.log("treeUpdate:found:" + JSON.stringify(found, null, 2));
+		console.log("treeUpdate:node:" + JSON.stringify(node, null, 2));
 		found = node;
 	}
-	else console.log("Cannot find node with uuid: " + node.uuid);
+	else console.log("Cannot find node with id: " + node.id);
 };
 
 export function treeDelete(deletingNode, root) {
-	if (root.uuid === deletingNode.uuid) {
+	if (root.id === deletingNode.id) {
 		root = null;
 	}
 
@@ -49,7 +49,7 @@ export function treeDelete(deletingNode, root) {
 	while (queue.length) {
 		let node = queue.shift();
 		for (let i = 0; i < node.content.length; i++) {
-			if (node.content[i].uuid === deletingNode.uuid) {
+			if (node.content[i].id === deletingNode.id) {
 				node.content.splice(i, 1);
 			}
 			else {
