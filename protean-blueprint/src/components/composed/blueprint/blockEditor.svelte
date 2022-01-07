@@ -20,7 +20,7 @@ import { fly } from 'svelte/transition';
 {#if $editing}
 	<div in:fly="{{ x: 50, duration: 200 }}" out:fly="{{ x: 50, duration: 200 }}" class="flex-shrink">
 		<div class="flex w-full mb-3 items-center justify-between">
-			<h3>Block editor</h3>
+			<h3>Editor</h3>
 		</div>
 		<div class="flex flex-col h-full py-2 space-y-3">
 			{#if !$selectedBlock?.type}

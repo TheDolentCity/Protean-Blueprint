@@ -18,11 +18,11 @@
 			.build();
 	};
 	
-	const inputCss = () => {
+	$: inputCss = () => {
 		return new CssBuilder()
 			.addClass('w-full resize-none outline-none mst')
 			.addClass('block-input', !$editing)
-			.addClass('p-2 rounded bg-white dark:bg-black', $editing)
+			.addClass('p-2 rounded bg-base-50 dark:bg-base-900', $editing)
 			.addClass('type-display', block.meta.type === TextTypes.H1)
 			.addClass('type-title-large', block.meta.type === TextTypes.H2)
 			.addClass('type-title', block.meta.type === TextTypes.H3)
@@ -37,7 +37,13 @@
 			.build();
 	};
 
-	$: $selectedBlock, inputCss();
+	const update = () => {
+		if (selected) {
+			block = $selectedBlock;
+		}
+	}
+
+	$: $selectedBlock, update();
 </script>
 
 {#if $editing}
@@ -47,12 +53,11 @@
 				Text block
 			</div>
 		{/if}
-		<textarea 
-			use:autoresize 
-			bind:value={block.content}
-			placeholder="Begin typing..." 
-			disabled={$editing || $locked} 
-			class={inputCss()} />
+		{#if block.content}
+			<span class={inputCss()}>{block.content}</span>
+		{:else}
+			<span class={inputCss()}>Placeholder</span>
+		{/if}
 	</button>
 {:else}
 	<div class={containerCss()}>

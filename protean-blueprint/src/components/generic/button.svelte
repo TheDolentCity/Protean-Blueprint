@@ -47,22 +47,22 @@
 	}
 	/* Primary Button Colors */
 	.primary-neutral {
-		@apply bg-black text-zinc-100 hover:bg-zinc-900 active:bg-zinc-800;
+		@apply bg-base-900 text-zinc-100 hover:bg-zinc-900 active:bg-zinc-800;
 	}
 	.primary-neutral-dark {
-		@apply bg-white text-zinc-900 hover:bg-zinc-100 active:bg-zinc-200;
+		@apply bg-base-50 text-zinc-900 hover:bg-zinc-100 active:bg-zinc-200;
 	}
 	.primary-cool {
-		@apply bg-black text-slate-100 hover:bg-slate-900 active:bg-slate-800;
+		@apply bg-base-900 text-slate-100 hover:bg-slate-900 active:bg-slate-800;
 	}
 	.primary-cool-dark {
-		@apply bg-white text-slate-900 hover:bg-slate-100 active:bg-slate-200;
+		@apply bg-base-50 text-slate-900 hover:bg-slate-100 active:bg-slate-200;
 	}
 	.primary-warm {
-		@apply bg-black text-stone-100 hover:bg-stone-900 active:bg-stone-800;
+		@apply bg-base-900 text-stone-100 hover:bg-stone-900 active:bg-stone-800;
 	}
 	.primary-warm-dark {
-		@apply bg-white text-stone-900 hover:bg-stone-100 active:bg-stone-200;
+		@apply bg-base-50 text-stone-900 hover:bg-stone-100 active:bg-stone-200;
 	}
 	/* Secondary Button Colors */
 	.secondary-neutral {

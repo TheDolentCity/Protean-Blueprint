@@ -6,10 +6,10 @@
 	import { fly } from 'svelte/transition';
 import { CssBuilder } from '$lib/builders/cssBuilder';
 
-	$: h1Css = () => { return new CssBuilder()
+	$: styleCss = (textType) => { return new CssBuilder()
 		.addClass('btn-icon !font-normal')
-		.addClass('btn-stealth', $selectedBlock?.meta?.type && $selectedBlock.meta.type !== TextTypes.H1)
-		.addClass('btn-primary', $selectedBlock?.meta?.type && $selectedBlock.meta.type === TextTypes.H1)
+		.addClass('btn-stealth', $selectedBlock?.meta?.type && $selectedBlock.meta.type !== textType)
+		.addClass('btn-primary', $selectedBlock?.meta?.type && $selectedBlock.meta.type === textType)
 		.build();
 	};
 </script>
@@ -17,19 +17,19 @@ import { CssBuilder } from '$lib/builders/cssBuilder';
 {#if $selectedBlock?.type}
 	<div in:fly="{{ y: -50, duration: 200 }}" out:fly="{{ y: -50, duration: 200 }}" class="flex flex-col">
 		<span class="type-focus font-semibold font-mono">Style</span>
-		<div class="flex flex-wrap mt-1">
-			<button on:click={() => $selectedBlock.meta.type = TextTypes.H1} class={h1Css()}>H1</button>
-			<button on:click={() => $selectedBlock.meta.type = TextTypes.H2} class="btn-stealth btn-icon !font-normal">H2</button>
-			<button on:click={() => $selectedBlock.meta.type = TextTypes.H3} class="btn-stealth btn-icon !font-normal">H3</button>
-			<button on:click={() => $selectedBlock.meta.type = TextTypes.H4} class="btn-stealth btn-icon !font-normal">H4</button>
-			<button on:click={() => $selectedBlock.meta.type = TextTypes.H5} class="btn-stealth btn-icon !font-normal">H5</button>
-			<button on:click={() => $selectedBlock.meta.type = TextTypes.P} class="btn-stealth btn-icon !font-normal">PA</button>
+		<div class="flex flex-wrap mt-2">
+			<button on:click={() => $selectedBlock.meta.type = TextTypes.H1} class={styleCss(TextTypes.H1)}>H1</button>
+			<button on:click={() => $selectedBlock.meta.type = TextTypes.H2} class={styleCss(TextTypes.H2)}>H2</button>
+			<button on:click={() => $selectedBlock.meta.type = TextTypes.H3} class={styleCss(TextTypes.H3)}>H3</button>
+			<button on:click={() => $selectedBlock.meta.type = TextTypes.H4} class={styleCss(TextTypes.H4)}>H4</button>
+			<button on:click={() => $selectedBlock.meta.type = TextTypes.H5} class={styleCss(TextTypes.H5)}>H5</button>
+			<button on:click={() => $selectedBlock.meta.type = TextTypes.P} class={styleCss(TextTypes.PA)}>PA</button>
 		</div>
 	</div>
 
 	<div in:fly="{{ y: -50, duration: 200 }}" out:fly="{{ y: -50, duration: 200 }}" class="flex flex-col">
 		<span class="type-focus font-semibold font-mono">Alignment</span>
-		<div class="flex flex-wrap mt-1">
+		<div class="flex flex-wrap mt-2">
 			<button on:click={() => $selectedBlock.meta.align = TextAlignments.Left} class="btn-stealth btn-icon">
 				<TextLeft />
 			</button>

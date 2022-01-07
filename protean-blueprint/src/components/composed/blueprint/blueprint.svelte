@@ -13,7 +13,7 @@
 </script>
 
 {#if $activeFile}
-	<div class="flex-grow grid grid-cols-12 h-full max-h-full content-start overflow-y-auto rounded-xl shadow-xl bg-white dark:bg-black border border-base-200 dark:border-base-800 mst">
+	<div class="flex-grow grid grid-cols-12 h-full max-h-full content-start overflow-y-auto rounded-xl shadow-xl bg-base-50 dark:bg-base-900 border border-base-200 dark:border-base-800 mst">
 		<Block bind:block={$activeFile} />
 	</div>
 {:else}

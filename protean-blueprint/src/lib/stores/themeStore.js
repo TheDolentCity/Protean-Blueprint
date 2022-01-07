@@ -8,8 +8,8 @@ export const bg_elev_0 = derived(
 	brightness,
     $brightness => { 
         switch ($brightness) {
-            case "bright": return "bg-white";
-            case "dark": return "bg-black";
+            case "bright": return "bg-base-50";
+            case "dark": return "bg-base-900";
             default: throw new Error("Brightness: Not Valid");
         }
     }

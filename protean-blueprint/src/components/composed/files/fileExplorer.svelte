@@ -30,15 +30,15 @@
 	$: fileCss = (file) => {
 		return new CssBuilder()
 			.addClass('px-3 py-2 rounded-xl text-left mst')
-			.addClass('bg-white dark:bg-black shadow-xl border border-base-300 dark:border-base-700', $activeFile && $activeFile.id === file?.id)
-			.addClass('bg-base-100 dark:bg-base-900 shadow border border-base-200 dark:border-base-800', !$activeFile || $activeFile.id !== file?.id)
+			.addClass('bg-base-50 dark:bg-base-900 shadow-xl border border-base-300 dark:border-base-700', $activeFile && $activeFile.id === file?.id)
+			.addClass('bg-base-100 dark:bg-base-800 shadow border border-base-200 dark:border-base-800', !$activeFile || $activeFile.id !== file?.id)
 			.build();
 	};
 
-	$: $activeFile, console.log($activeFile);
+	$: $activeFile, console.log(JSON.stringify($activeFile, null, 2));
 </script>
 
-<div class="flex-none w-80">
+<div class="flex-none w-60">
 	<div class="flex w-full mb-3 items-center justify-between">
 		<h3>Files</h3>
 		<button on:click={createFile} class="btn-stealth btn-icon">

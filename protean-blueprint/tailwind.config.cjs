@@ -14,7 +14,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        'base': colors.zinc,
+        'base': colors.slate,
         'accent': colors.blue
       },
 			width: {
