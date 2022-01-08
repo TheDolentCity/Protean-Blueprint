@@ -1,20 +1,11 @@
 <script>
 	import { editing } from '$lib/stores/editorStore';
-	import { activeFile, selectedBlock } from '$lib/stores/fileStore';
-	import { treeUpdate } from '$lib/system/tree';
+	import { selectedBlock } from '$lib/stores/fileStore';
 	import { BlockTypes } from '$lib/enums/blockTypes';
 	import BlockTextEditor from './editors/blockTextEditor.svelte';
 import { fly } from 'svelte/transition';
 
 	$: $editing, $selectedBlock = null;
-	$: $selectedBlock, updateSelectedBlock();
-
-	const updateSelectedBlock = () => {
-		console.log("SelectedBlock\n" + JSON.stringify($selectedBlock, null, 2));
-		// if ($selectedBlock) {
-		// 	treeUpdate($selectedBlock, $activeFile);
-		// }
-	}
 </script>
 
 {#if $editing}
@@ -22,7 +13,7 @@ import { fly } from 'svelte/transition';
 		<div class="flex w-full mb-3 items-center justify-between">
 			<h3>Editor</h3>
 		</div>
-		<div class="flex flex-col h-full py-2 space-y-3">
+		<div class="flex flex-col h-full py-2 space-y-8">
 			{#if !$selectedBlock?.type}
 				<h4>No selected type</h4>
 			{:else if $selectedBlock.type === BlockTypes.Section}

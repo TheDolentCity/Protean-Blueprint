@@ -4,10 +4,10 @@
 	import { editing } from '$lib/stores/editorStore';
 	import { TextTypes } from '$lib/enums/textTypes';
 	import { TextAlignments } from '$lib/enums/textAlignments';
-	import { ColumnTypes } from '$lib/enums/columnTypes';
 	import { BlockTypes } from '$lib/enums/blockTypes';
 	import { Link, Type, UiChecks, UiRadios } from 'svelte-bootstrap-icons';
 	import { clickOutside } from '$lib/events/clickOutside';
+	import { TextTransforms } from '$lib/enums/textTransforms';
 
 	export let block;
 
@@ -18,8 +18,8 @@
 	}
 
 	const createBlock = (type) => {
-		console.log("Block1\n" + JSON.stringify(block, null, 2));
-		console.log("Content1\n" + JSON.stringify(block.content, null, 2));
+		// console.log("Block1\n" + JSON.stringify(block, null, 2));
+		// console.log("Content1\n" + JSON.stringify(block.content, null, 2));
 		block = { ...block,
 			content: [...block.content,
 			{
@@ -28,13 +28,13 @@
 				meta: {
 					type: TextTypes.P,
 					align: TextAlignments.Left,
-					columns: ColumnTypes.Full
+					transform: TextTransforms.NormalCase
 				},
 				content: ""
 			}]
 		};
-		console.log("Block2\n" + JSON.stringify(block, null, 2));
-		console.log("Content2\n" + JSON.stringify(block.content, null, 2));
+		// console.log("Block2\n" + JSON.stringify(block, null, 2));
+		// console.log("Content2\n" + JSON.stringify(block.content, null, 2));
 	};
 </script>
 

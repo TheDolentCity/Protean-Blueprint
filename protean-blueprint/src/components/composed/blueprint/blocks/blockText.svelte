@@ -6,6 +6,7 @@
 	import { CssBuilder } from '$lib/builders/cssBuilder';
 	import { TextTypes } from '$lib/enums/textTypes';
 	import { TextAlignments } from '$lib/enums/textAlignments';
+import { TextTransforms } from '$lib/enums/textTransforms';
 
 	export let block;
 
@@ -20,7 +21,7 @@
 	
 	$: inputCss = () => {
 		return new CssBuilder()
-			.addClass('w-full resize-none outline-none mst')
+			.addClass('w-full resize-none outline-none break-words mst')
 			.addClass('block-input', !$editing)
 			.addClass('p-2 rounded bg-base-50 dark:bg-base-900', $editing)
 			.addClass('type-display', block.meta.type === TextTypes.H1)
@@ -34,6 +35,10 @@
 			.addClass('text-center', block.meta.align === TextAlignments.Center)
 			.addClass('text-right', block.meta.align === TextAlignments.Right)
 			.addClass('text-justify', block.meta.align === TextAlignments.Justify)
+			.addClass('normal-case', block.meta.transform === TextTransforms.NormalCase)
+			.addClass('uppercase', block.meta.transform === TextTransforms.Uppercase)
+			.addClass('lowercase', block.meta.transform === TextTransforms.Lowercase)
+			.addClass('capitalize', block.meta.transform === TextTransforms.Capitalize)
 			.build();
 	};
 
