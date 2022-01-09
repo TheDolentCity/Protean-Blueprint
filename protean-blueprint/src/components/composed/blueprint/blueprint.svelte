@@ -12,7 +12,7 @@
 	}
 </script>
 
-<div class="flex-none h-full max-h-full py-8">
+<div class="flex-grow flex h-full max-h-full py-8 items-center justify-center">
 	<div class="aspect-[1/1.4142] h-full">
 		{#if $activeFile}
 			<div class="grid grid-cols-12 h-full max-h-full content-start overflow-y-auto rounded-xl shadow-xl bg-white dark:bg-base-900 border-default mst">

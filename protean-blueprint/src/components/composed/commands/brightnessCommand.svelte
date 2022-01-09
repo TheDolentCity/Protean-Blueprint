@@ -36,7 +36,7 @@
 	{/if}
 
 	{#if tooltipVisible}
-		<div class="absolute left-16 px-3 py-1 whitespace-nowrap text-sm font-normal bg-base-100 dark:bg-base-900 rounded shadow-xl border border-base-200 dark:border-base-800 motion-safe:transition motion-safe:duration-200">
+		<div class="absolute left-14 px-3 py-1 whitespace-nowrap text-sm font-normal bg-white dark:bg-base-800 shadow-xl border border-base-200 dark:border-base-600 mst">
 			{#if $brightness == 'dark'}
 				Dark mode
 			{:else if $brightness == 'bright'}
