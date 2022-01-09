@@ -9,20 +9,15 @@ import { fly } from 'svelte/transition';
 </script>
 
 {#if $editing}
-	<div in:fly="{{ x: 50, duration: 200 }}" out:fly="{{ x: 50, duration: 200 }}" class="flex-shrink">
-		<div class="flex w-full mb-3 items-center justify-between">
-			<h3>Editor</h3>
-		</div>
-		<div class="flex flex-col h-full py-2 space-y-8">
-			{#if !$selectedBlock?.type}
-				<h4>No selected type</h4>
-			{:else if $selectedBlock.type === BlockTypes.Section}
-			<!-- content here -->
-			{:else if $selectedBlock.type === BlockTypes.Text}
-				<BlockTextEditor />
-			{:else}
-				<!-- else content here -->
-			{/if}
-		</div>
+	<div in:fly="{{ x: 50, duration: 200 }}" out:fly="{{ x: 50, duration: 200 }}" class="flex flex-col w-60 h-full border-l border-base-200 dark:border-base-800 bg-base-100 dark:bg-base-900">
+		{#if !$selectedBlock?.type}
+			<p>No selected type</p>
+		{:else if $selectedBlock.type === BlockTypes.Section}
+		<!-- content here -->
+		{:else if $selectedBlock.type === BlockTypes.Text}
+			<BlockTextEditor />
+		{:else}
+			<!-- else content here -->
+		{/if}
 	</div>
 {/if}

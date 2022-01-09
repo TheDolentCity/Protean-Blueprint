@@ -6,11 +6,9 @@
 	import { CssBuilder } from '$lib/builders/cssBuilder';
 	import { TextTypes } from '$lib/enums/textTypes';
 	import { TextAlignments } from '$lib/enums/textAlignments';
-import { TextTransforms } from '$lib/enums/textTransforms';
+	import { TextCapitals } from '$lib/enums/textCapitals';
 
 	export let block;
-
-	$: selected = $selectedBlock && $selectedBlock.id == block.id;
 
 	$: containerCss = () => {
 		return new CssBuilder()
@@ -23,7 +21,7 @@ import { TextTransforms } from '$lib/enums/textTransforms';
 		return new CssBuilder()
 			.addClass('w-full resize-none outline-none break-words mst')
 			.addClass('block-input', !$editing)
-			.addClass('p-2 rounded bg-base-50 dark:bg-base-900', $editing)
+			.addClass('p-2', $editing)
 			.addClass('type-display', block.meta.type === TextTypes.H1)
 			.addClass('type-title-large', block.meta.type === TextTypes.H2)
 			.addClass('type-title', block.meta.type === TextTypes.H3)
@@ -35,10 +33,10 @@ import { TextTransforms } from '$lib/enums/textTransforms';
 			.addClass('text-center', block.meta.align === TextAlignments.Center)
 			.addClass('text-right', block.meta.align === TextAlignments.Right)
 			.addClass('text-justify', block.meta.align === TextAlignments.Justify)
-			.addClass('normal-case', block.meta.transform === TextTransforms.NormalCase)
-			.addClass('uppercase', block.meta.transform === TextTransforms.Uppercase)
-			.addClass('lowercase', block.meta.transform === TextTransforms.Lowercase)
-			.addClass('capitalize', block.meta.transform === TextTransforms.Capitalize)
+			.addClass('normal-case', block.meta.transform === TextCapitals.NormalCase)
+			.addClass('uppercase', block.meta.transform === TextCapitals.Uppercase)
+			.addClass('lowercase', block.meta.transform === TextCapitals.Lowercase)
+			.addClass('capitalize', block.meta.transform === TextCapitals.Capitalize)
 			.build();
 	};
 
@@ -48,6 +46,7 @@ import { TextTransforms } from '$lib/enums/textTransforms';
 		}
 	}
 
+	$: selected = $selectedBlock && $selectedBlock.id == block.id;
 	$: $selectedBlock, update();
 </script>
 
