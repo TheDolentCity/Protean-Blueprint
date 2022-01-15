@@ -1,30 +1,13 @@
 <script>
 	import { v4 as uuidv4 } from 'uuid';
 	import { CssBuilder } from '$lib/builders/cssBuilder';
-	import { activeFile, files } from '$lib/stores/fileStore';
+	import { activeFile, files, newFileForm } from '$lib/stores/fileStore';
 	import { PlusLg } from 'svelte-bootstrap-icons';
 	import { BlockTypes } from '$lib/enums/blockTypes';	
 	import { ColumnTypes } from '$lib/enums/columnTypes';
 
 	const setActiveFile = (file) => {
 		$activeFile = file;
-	};
-
-	const createFile = () => {
-		$files = [...$files, 
-			{
-				id: uuidv4(),
-				type: BlockTypes.Section,
-				meta:
-				{
-					fileData: {
-						name: "Auto File Name",
-						description: "This is a file description test."
-					},
-					columns: ColumnTypes.Full
-				},
-				content: []
-			}];
 	};
 
 	$: fileCss = (file) => {
@@ -38,10 +21,10 @@
 	$: $activeFile, console.log(JSON.stringify($activeFile, null, 2));
 </script>
 
-<div class="flex-none w-80 border-r border-l border-base-200 dark:border-base-800 bg-white dark:bg-base-900 mst">
+<div class="flex-auto w-80 border-r border-l border-base-200 dark:border-base-800 bg-white dark:bg-base-900 mst">
 	<div class="flex w-full px-4 py-2 items-center justify-between">
 		<h3>Files</h3>
-		<button on:click={createFile} class="btn-stealth btn-icon">
+		<button on:click={() => $newFileForm = {}} class="btn-stealth btn-icon">
 			<PlusLg />
 		</button>
 	</div>

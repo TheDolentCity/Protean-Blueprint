@@ -1,8 +1,24 @@
 <script>
 	import Block from './block.svelte';
-	import { activeFile, files } from '$lib/stores/fileStore';
+	import { activeFile, files, newFileForm } from '$lib/stores/fileStore';
+	import NewFileForm from '../files/newFileForm.svelte';
+import { DocumentSize } from '$lib/enums/documentSize';
+import { CssBuilder } from '$lib/builders/cssBuilder';
 
-	$: $activeFile, updateFilesStore();
+	$: blueprintCss = () => {
+		return new CssBuilder()
+			.addClass('h-full max-h-full content-start overflow-y-auto shadow-xl bg-white dark:bg-base-900 border-default mst')
+			.addClass('aspect-[1/1.4142]', 
+				$activeFile?.meta.fileData.documentSize !== DocumentSize.A4 ||
+				$activeFile?.meta.fileData.documentSize !== DocumentSize.Letter ||
+				$activeFile?.meta.fileData.documentSize !== DocumentSize.Poster ||
+				$activeFile?.meta.fileData.documentSize !== DocumentSize.Square)
+			.addClass('aspect-[1/1.4142]', $activeFile?.meta.fileData.documentSize === DocumentSize.A4)
+			.addClass('aspect-[1/1.2941]', $activeFile?.meta.fileData.documentSize === DocumentSize.Letter)
+			.addClass('aspect-[1/1.5]', $activeFile?.meta.fileData.documentSize === DocumentSize.Poster)
+			.addClass('aspect-[1/1]', $activeFile?.meta.fileData.documentSize === DocumentSize.Square)
+			.build();
+	};
 	
 	const updateFilesStore = () => {
 		let activeIndex = $files.findIndex(f => f.id === $activeFile.id);
@@ -10,18 +26,24 @@
 			$files[activeIndex] = $activeFile;
 		}
 	}
+
+	$: $activeFile, updateFilesStore();
 </script>
 
-<div class="flex-grow flex h-full max-h-full py-8 items-center justify-center">
-	<div class="aspect-[1/1.4142] h-full">
-		{#if $activeFile}
-			<div class="grid grid-cols-12 h-full max-h-full content-start overflow-y-auto rounded-xl shadow-xl bg-white dark:bg-base-900 border-default mst">
-				<Block bind:block={$activeFile} />
+{#if $newFileForm !== null}
+	<div class="flex-grow flex h-full max-h-full px-12 py-8 items-center justify-center">
+		<div class={blueprintCss()}>
+			<div class="h-full max-h-full border-default mst">
+				<NewFileForm />
 			</div>
-		{:else}
-			<div class="flex h-full max-h-full justify-center items-center border-default mst">
-				<h2>No active file</h2>
-			</div>
-		{/if}
+		</div>
 	</div>
-</div>
+{:else}
+	<div class="flex-grow flex h-full max-h-full px-12 py-8 items-center justify-center">
+		<div class={blueprintCss()}>
+			{#if $activeFile}
+				<Block bind:block={$activeFile} />
+			{/if}
+		</div>
+	</div>
+{/if}

@@ -22,11 +22,7 @@
 	on:mouseenter={setTooltipVisible}
 	on:mouseleave={setTooltipInvisible}
 	on:click={toggleDarkMode}
-	class={$brightness == 'bright'
-		? 'command bg-gradient-to-tr from-yellow-600 via-amber-400 to-amber-200'
-		: $brightness == 'dark'
-		? 'command bg-gradient-to-br from-sky-200 via-sky-700 to-slate-800'
-		: 'command'}
+	class="command"
 	transition:fade
 >
 	{#if $brightness == 'dark'}

@@ -23,9 +23,7 @@
 	on:mouseleave={setTooltipInvisible}
 	on:click={toggleDarkMode}
 	on:click={toggleDarkMode}
-	class={$editing ? 
-			"command bg-gradient-to-tr from-orange-300 via-orange-100 to-orange-100 dark:from-stone-900 dark:via-orange-700 dark:to-orange-700" :
-			"command bg-gradient-to-b from-slate-400 via-slate-300 to-slate-300 dark:from-slate-700 dark:via-slate-500 dark:to-slate-500"}
+	class="command"
 	transition:fade
 >
 	{#if $editing}

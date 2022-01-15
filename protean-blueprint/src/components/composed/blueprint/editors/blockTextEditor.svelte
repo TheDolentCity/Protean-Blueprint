@@ -10,28 +10,28 @@
 
 	$: styleCss = (textType) => { return new CssBuilder()
 		.addClass('btn btn-icon font-mono text-sm type-default hover:raise-5')
-		.addClass('type-default', $selectedBlock?.meta?.type && $selectedBlock.meta.type !== textType)
+		.addClass('', $selectedBlock?.meta?.type && $selectedBlock.meta.type !== textType)
 		.addClass('underline decoration-2 underline-offset-2 decoration-accent-600', $selectedBlock?.meta?.type && $selectedBlock.meta.type === textType)
 		.build();
 	};
 
 	$: alignCss = (alignType) => { return new CssBuilder()
 		.addClass('btn btn-icon font-mono text-sm type-default hover:raise-5')
-		.addClass('type-default', $selectedBlock?.meta?.align && $selectedBlock.meta.align !== alignType)
-		.addClass('underline decoration-2 underline-offset-2 decoration-accent-600', $selectedBlock?.meta?.align && $selectedBlock.meta.align === alignType)
+		.addClass('', $selectedBlock?.meta?.align && $selectedBlock.meta.align !== alignType)
+		.addClass('relative pseudo-underline', $selectedBlock?.meta?.align && $selectedBlock.meta.align === alignType)
 		.build();
 	};
 
 	$: transformCss = (transformType) => { return new CssBuilder()
 		.addClass('btn btn-text w-full font-mono text-sm type-default hover:raise-5')
-		.addClass('type-default', $selectedBlock?.meta?.transform && $selectedBlock.meta.transform !== transformType)
+		.addClass('', $selectedBlock?.meta?.transform && $selectedBlock.meta.transform !== transformType)
 		.addClass('underline decoration-2 underline-offset-2 decoration-accent-600', $selectedBlock?.meta?.transform && $selectedBlock.meta.transform === transformType)
 		.build();
 	};
 </script>
 
 {#if $selectedBlock?.type}
-	<Accordian title="Style">
+	<Accordian title="Style" expandCss="p-1">
 		<div class="flex flex-wrap">
 			<button on:click={() => $selectedBlock.meta.type = TextTypes.H1} class={styleCss(TextTypes.H1)}>H1</button>
 			<button on:click={() => $selectedBlock.meta.type = TextTypes.H2} class={styleCss(TextTypes.H2)}>H2</button>
@@ -41,7 +41,7 @@
 			<button on:click={() => $selectedBlock.meta.type = TextTypes.P} class={styleCss(TextTypes.P)}>PA</button>
 		</div>
 	</Accordian>
-	<Accordian title="Alignment">
+	<Accordian title="Alignment" expandCss="p-1">
 		<div class="flex flex-wrap">
 			<button on:click={() => $selectedBlock.meta.align = TextAlignments.Left} class={alignCss(TextAlignments.Left)}>
 				<TextLeft />
@@ -57,7 +57,7 @@
 			</button>
 		</div>
 	</Accordian>
-	<Accordian title="Capitals">
+	<Accordian title="Capitals" expandCss="p-1">
 		<div class="flex flex-wrap">
 			<button on:click={() => $selectedBlock.meta.transform = TextCapitals.NormalCase} class={transformCss(TextCapitals.NormalCase)}>Normal case</button>
 			<button on:click={() => $selectedBlock.meta.transform = TextCapitals.Uppercase} class={transformCss(TextCapitals.Uppercase)}>Uppercase</button>

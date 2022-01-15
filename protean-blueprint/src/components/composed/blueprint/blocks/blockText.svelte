@@ -12,7 +12,7 @@
 
 	$: containerCss = () => {
 		return new CssBuilder()
-			.addClass('group isolation relative flex justify-center border border-opacity-0 outline-none mst')
+			.addClass('isolation group relative flex justify-center border border-opacity-0 outline-none mst')
 			.addClass('border-opacity-100 border-accent-500 dark:border-accent-700', selected)
 			.build();
 	};
@@ -40,6 +40,11 @@
 			.build();
 	};
 
+	const select = (e) => {
+		$selectedBlock = block;
+		e.stopImmediatePropagation();
+	}
+
 	const update = () => {
 		if (selected) {
 			block = $selectedBlock;
@@ -51,7 +56,7 @@
 </script>
 
 {#if $editing}
-	<button on:click={() => $selectedBlock = block} class={containerCss()}>
+	<button on:click={(e) => select(e)} class={containerCss()}>
 		{#if selected}
 			<div in:fade="{{ duration: 200 }}" out:fade="{{ duration: 200 }}" class="absolute left-0 px-1 py-0.5 text-xs bg-accent-500 dark:bg-accent-700 text-white">
 				Text block
