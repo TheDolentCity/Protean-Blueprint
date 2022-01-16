@@ -7,6 +7,7 @@
 	import { TextTypes } from '$lib/enums/textTypes';
 	import { TextAlignments } from '$lib/enums/textAlignments';
 	import { TextCapitals } from '$lib/enums/textCapitals';
+import { Alignments } from '$lib/enums/alignments';
 
 	export let block;
 
@@ -26,6 +27,7 @@
 			.addClass('col-start-10', block.meta.columnStart === 10)
 			.addClass('col-start-11', block.meta.columnStart === 11)
 			.addClass('col-start-12', block.meta.columnStart === 12)
+			.addClass('col-start-13', block.meta.columnStart === 13)
 			.addClass('col-end-1', block.meta.columnEnd === 1)
 			.addClass('col-end-2', block.meta.columnEnd === 2)
 			.addClass('col-end-3', block.meta.columnEnd === 3)
@@ -38,6 +40,7 @@
 			.addClass('col-end-10', block.meta.columnEnd === 10)
 			.addClass('col-end-11', block.meta.columnEnd === 11)
 			.addClass('col-end-12', block.meta.columnEnd === 12)
+			.addClass('col-end-13', block.meta.columnEnd === 13)
 			.build();
 	};
 	
@@ -53,10 +56,12 @@
 			.addClass('type-body-large', block.meta.type === TextTypes.H5)
 			.addClass('type-body-strong', block.meta.type === TextTypes.H6)
 			.addClass('type-body', block.meta.type === TextTypes.P)
-			.addClass('text-left', block.meta.align === TextAlignments.Left)
-			.addClass('text-center', block.meta.align === TextAlignments.Center)
-			.addClass('text-right', block.meta.align === TextAlignments.Right)
-			.addClass('text-justify', block.meta.align === TextAlignments.Justify)
+			.addClass('text-left', block.meta.alignHorizontal === Alignments.Start)
+			.addClass('text-center', block.meta.alignHorizontal === Alignments.Center)
+			.addClass('text-right', block.meta.alignHorizontal === Alignments.End)
+			.addClass('self-start', block.meta.alignVertical === Alignments.Top)
+			.addClass('self-center', block.meta.alignVertical === Alignments.Middle)
+			.addClass('self-end', block.meta.alignVertical === Alignments.Bottom)
 			.addClass('normal-case', block.meta.transform === TextCapitals.NormalCase)
 			.addClass('uppercase', block.meta.transform === TextCapitals.Uppercase)
 			.addClass('lowercase', block.meta.transform === TextCapitals.Lowercase)

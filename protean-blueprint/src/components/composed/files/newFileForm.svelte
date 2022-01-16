@@ -6,9 +6,9 @@
 	import { DocumentSize } from '$lib/enums/documentSize';
 	import { CssBuilder } from '$lib/builders/cssBuilder';
 	import Accordian from '../../generic/accordian/accordian.svelte';
-import { ColumnTypes } from '$lib/enums/columnTypes';
+	import { ColumnTypes } from '$lib/enums/columnTypes';
 
-	let fileData = {
+	let meta = {
 		name: "",
 		description: "",
 		documentSize: DocumentSize.A4
@@ -21,8 +21,8 @@ import { ColumnTypes } from '$lib/enums/columnTypes';
 	$: sizeLabel = (s) => {
 		return new CssBuilder()
 			.addClass('relative flex aspect-[1/1.25] items-center justify-center border mst')
-			.addClass('border-default', fileData.documentSize !== s)
-			.addClass('border-accent', fileData.documentSize === s)
+			.addClass('border-default', meta.documentSize !== s)
+			.addClass('border-accent', meta.documentSize === s)
 			.build();
 		};
 	
@@ -44,12 +44,8 @@ import { ColumnTypes } from '$lib/enums/columnTypes';
 		$files = [...$files, 
 			{
 				id: uuidv4(),
-				type: BlockTypes.Section,
-				meta:
-				{
-					fileData: fileData,
-					columns: blockData.columns
-				},
+				type: BlockTypes.Root,
+				meta: meta,
 				content: []
 			}];
 		$newFileForm = null;
@@ -62,11 +58,11 @@ import { ColumnTypes } from '$lib/enums/columnTypes';
 			<Accordian title="File details" open={true} expandCss="flex flex-col px-3 pt-2 pb-4 space-y-2">
 				<label class="">
 					<div class="pb-1 text-xs uppercase">Name</div>
-					<input type="text" bind:value={fileData.name} placeholder="fill this out" class="w-full p-1 type-focus raise-5 focus:raise-10 mst" />
+					<input type="text" bind:value={meta.name} placeholder="fill this out" class="w-full p-1 type-focus raise-5 focus:raise-10 mst" />
 				</label>
 				<label class="">
 					<div class="pb-1 text-xs uppercase">Description</div>
-					<textarea use:autoresize bind:value={fileData.description} placeholder="fill this out" rows={1} class="w-full p-1 type-focus raise-5 focus:raise-10 resize-none mst" />
+					<textarea use:autoresize bind:value={meta.description} placeholder="fill this out" rows={1} class="w-full p-1 type-focus raise-5 focus:raise-10 resize-none mst" />
 				</label>
 			</Accordian>
 			<Accordian title="Layout" open={true} expandCss="flex flex-col px-3 pt-2 pb-4 space-y-2">
@@ -75,28 +71,28 @@ import { ColumnTypes } from '$lib/enums/columnTypes';
 				<div class="grid grid-cols-4 gap-4 w-full text-left">
 					<div class="text-center">
 						<label for="A4" class={sizeLabel(DocumentSize.A4)}>
-							<input type="radio" name="documentSize" id="A4" bind:group={fileData.documentSize} value={DocumentSize.A4} class="appearance-none">
+							<input type="radio" name="documentSize" id="A4" bind:group={meta.documentSize} value={DocumentSize.A4} class="appearance-none">
 							<span>{DocumentSize.A4.name}</span>
 						</label>
 						<span class="text-xs">1 : 1.4142</span>
 					</div>
 					<div class="text-center">
 						<label for="Letter" class={sizeLabel(DocumentSize.Letter)}>
-							<input type="radio" name="documentSize" id="Letter" bind:group={fileData.documentSize} value={DocumentSize.Letter} class="appearance-none">
+							<input type="radio" name="documentSize" id="Letter" bind:group={meta.documentSize} value={DocumentSize.Letter} class="appearance-none">
 							<span>{DocumentSize.Letter.name}</span>
 						</label>
 						<span class="text-xs">1 : 1.2941</span>
 					</div>
 					<div class="text-center">
 						<label for="Poster" class={sizeLabel(DocumentSize.Poster)}>
-							<input type="radio" name="documentSize" id="Poster" bind:group={fileData.documentSize} value={DocumentSize.Poster} class="appearance-none">
+							<input type="radio" name="documentSize" id="Poster" bind:group={meta.documentSize} value={DocumentSize.Poster} class="appearance-none">
 							<span>{DocumentSize.Poster.name}</span>
 						</label>
 						<span class="text-xs">1 : 1.5</span>
 					</div>
 					<div class="text-center">
 						<label for="Square" class={sizeLabel(DocumentSize.Square)}>
-							<input type="radio" name="documentSize" id="Square" bind:group={fileData.documentSize} value={DocumentSize.Square} class="appearance-none">
+							<input type="radio" name="documentSize" id="Square" bind:group={meta.documentSize} value={DocumentSize.Square} class="appearance-none">
 							<span>{DocumentSize.Square.name}</span>
 						</label>
 						<span class="text-xs">1 : 1</span>

@@ -1,10 +1,10 @@
 <script>
 	import { fly } from 'svelte/transition';
-	import { Fonts, Justify, TextCenter, TextLeft, TextRight, Type } from 'svelte-bootstrap-icons';
+	import { AlignBottom, AlignCenter, AlignEnd, AlignMiddle, AlignStart, AlignTop, Fonts, Justify, TextCenter, TextLeft, TextRight, Type } from 'svelte-bootstrap-icons';
 	import { selectedBlock } from '$lib/stores/fileStore';
 	import { CssBuilder } from '$lib/builders/cssBuilder';
 	import { TextTypes } from '$lib/enums/textTypes';
-	import { TextAlignments } from '$lib/enums/textAlignments';
+	import { Alignments } from '$lib/enums/alignments';
 	import { TextCapitals } from '$lib/enums/textCapitals';
 	import Accordian from '../../../../components/generic/accordian/accordian.svelte';
 
@@ -15,10 +15,17 @@
 		.build();
 	};
 
-	$: alignCss = (alignType) => { return new CssBuilder()
+	$: alignHorizontalCss = (alignType) => { return new CssBuilder()
 		.addClass('btn btn-icon font-mono text-sm type-default hover:raise-5')
-		.addClass('', $selectedBlock?.meta?.align && $selectedBlock.meta.align !== alignType)
-		.addClass('relative pseudo-underline', $selectedBlock?.meta?.align && $selectedBlock.meta.align === alignType)
+		.addClass('', $selectedBlock?.meta?.alignHorizontal && $selectedBlock.meta.alignHorizontal !== alignType)
+		.addClass('relative pseudo-underline', $selectedBlock?.meta?.alignHorizontal && $selectedBlock.meta.alignHorizontal === alignType)
+		.build();
+	};
+
+	$: alignVerticalCss = (alignType) => { return new CssBuilder()
+		.addClass('btn btn-icon font-mono text-sm type-default hover:raise-5')
+		.addClass('', $selectedBlock?.meta?.alignVertical && $selectedBlock.meta.alignVertical !== alignType)
+		.addClass('relative pseudo-underline', $selectedBlock?.meta?.alignVertical && $selectedBlock.meta.alignVertical === alignType)
 		.build();
 	};
 
@@ -31,6 +38,18 @@
 </script>
 
 {#if $selectedBlock?.type}
+	<Accordian title="Columns" expandCss="p-1">
+		<div class="flex flex-wrap px-2 pb-2">
+			<label class="">
+				<div class="pt-1.5 pb-0.5 text-xs uppercase">Column Start</div>
+				<input type="number" bind:value={$selectedBlock.meta.columnStart} min="1" max="13" class="p-1 type-focus raise-5 focus:raise-10 mst" />
+			</label>
+			<label class="">
+				<div class="pt-1.5 pb-0.5 text-xs uppercase">Column End</div>
+				<input type="number" bind:value={$selectedBlock.meta.columnEnd} min="1" max="13" class="p-1 type-focus raise-5 focus:raise-10 mst" />
+			</label>
+		</div>
+	</Accordian>
 	<Accordian title="Style" expandCss="p-1">
 		<div class="flex flex-wrap">
 			<button on:click={() => $selectedBlock.meta.type = TextTypes.H1} class={styleCss(TextTypes.H1)}>H1</button>
@@ -41,36 +60,38 @@
 			<button on:click={() => $selectedBlock.meta.type = TextTypes.P} class={styleCss(TextTypes.P)}>PA</button>
 		</div>
 	</Accordian>
-	<Accordian title="Horizontal alignment" expandCss="p-1">
+	<Accordian title="Alignment" expandCss="p-1">
 		<div class="flex flex-wrap">
-			<button on:click={() => $selectedBlock.meta.align = TextAlignments.Left} class={alignCss(TextAlignments.Left)}>
-				<TextLeft />
-			</button>
-			<button on:click={() => $selectedBlock.meta.align = TextAlignments.Center} class={alignCss(TextAlignments.Center)}>
-				<TextCenter />
-			</button>
-			<button on:click={() => $selectedBlock.meta.align = TextAlignments.Right} class={alignCss(TextAlignments.Right)}>
-				<TextRight />
-			</button>
-			<button on:click={() => $selectedBlock.meta.align = TextAlignments.Justify} class={alignCss(TextAlignments.Justify)}>
-				<Justify />
-			</button>
-		</div>
-	</Accordian>
-	<Accordian title="Vertical alignment" expandCss="p-1">
-		<div class="flex flex-wrap">
-			<button on:click={() => $selectedBlock.meta.align = TextAlignments.Left} class={alignCss(TextAlignments.Left)}>
-				<TextLeft />
-			</button>
-			<button on:click={() => $selectedBlock.meta.align = TextAlignments.Center} class={alignCss(TextAlignments.Center)}>
-				<TextCenter />
-			</button>
-			<button on:click={() => $selectedBlock.meta.align = TextAlignments.Right} class={alignCss(TextAlignments.Right)}>
-				<TextRight />
-			</button>
-			<button on:click={() => $selectedBlock.meta.align = TextAlignments.Justify} class={alignCss(TextAlignments.Justify)}>
-				<Justify />
-			</button>
+			<!-- Horizontal alignment -->
+			<div class="px-2 pt-1.5 pb-2">
+				<div class="text-xs uppercase">Horizontal</div>
+				<div class="flex flex-wrap">
+					<button on:click={() => $selectedBlock.meta.alignHorizontal = Alignments.Start} class={alignHorizontalCss(Alignments.Start)}>
+						<AlignStart />
+					</button>
+					<button on:click={() => $selectedBlock.meta.alignHorizontal = Alignments.Center} class={alignHorizontalCss(Alignments.Center)}>
+						<AlignCenter />
+					</button>
+					<button on:click={() => $selectedBlock.meta.alignHorizontal = Alignments.End} class={alignHorizontalCss(Alignments.End)}>
+						<AlignEnd />
+					</button>
+				</div>
+			</div>
+			<!-- Vertical alignment -->
+			<div class="px-2 pt-1.5 pb-2">
+				<div class="text-xs uppercase">Vertical</div>
+				<div class="flex flex-wrap">
+					<button on:click={() => $selectedBlock.meta.alignVertical = Alignments.Top} class={alignVerticalCss(Alignments.Top)}>
+						<AlignTop />
+					</button>
+					<button on:click={() => $selectedBlock.meta.alignVertical = Alignments.Middle} class={alignVerticalCss(Alignments.Middle)}>
+						<AlignMiddle />
+					</button>
+					<button on:click={() => $selectedBlock.meta.alignVertical = Alignments.Bottom} class={alignVerticalCss(Alignments.Bottom)}>
+						<AlignBottom />
+					</button>
+				</div>
+			</div>
 		</div>
 	</Accordian>
 	<Accordian title="Capitals" expandCss="p-1">

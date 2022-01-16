@@ -9,7 +9,7 @@ import { fly } from 'svelte/transition';
 </script>
 
 {#if $editing}
-	<div in:fly="{{ x: 50, duration: 200 }}" out:fly="{{ x: 50, duration: 200 }}" class="flex-shrink flex flex-col h-full border-l border-base-200 dark:border-base-800 bg-white dark:bg-base-900 mst">
+	<div in:fly="{{ x: 50, duration: 200 }}" out:fly="{{ x: 50, duration: 200 }}" class="flex-none flex flex-col w-80 h-full border-l border-base-200 dark:border-base-800 bg-white dark:bg-base-900 mst">
 		{#if !$selectedBlock?.type}
 			<p>No selected type</p>
 		{:else if $selectedBlock.type === BlockTypes.Section}

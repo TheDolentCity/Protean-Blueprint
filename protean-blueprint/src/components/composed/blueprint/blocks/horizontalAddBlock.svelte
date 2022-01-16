@@ -9,9 +9,11 @@
 	import { clickOutside } from '$lib/events/clickOutside';
 	import { TextCapitals } from '$lib/enums/textCapitals';
 	import { CssBuilder } from '$lib/builders/cssBuilder';
+import { Alignments } from '$lib/enums/alignments';
 
 	export let block;
 	export let columnStart;
+	export let columnEnd;
 
 	let blockBarVisible;
 
@@ -30,6 +32,7 @@
 			.addClass('col-start-10', columnStart === 10)
 			.addClass('col-start-11', columnStart === 11)
 			.addClass('col-start-12', columnStart === 12)
+			.addClass('col-start-13', columnStart === 13)
 			.addClass('col-end-1', columnEnd === 1)
 			.addClass('col-end-2', columnEnd === 2)
 			.addClass('col-end-3', columnEnd === 3)
@@ -42,6 +45,7 @@
 			.addClass('col-end-10', columnEnd === 10)
 			.addClass('col-end-11', columnEnd === 11)
 			.addClass('col-end-12', columnEnd === 12)
+			.addClass('col-end-13', columnEnd === 13)
 			.build();
 	};
 
@@ -59,7 +63,8 @@
 				type: BlockTypes.Text,
 				meta: {
 					type: TextTypes.P,
-					align: TextAlignments.Left,
+					alignHorizontal: Alignments.Start,
+					alignVertical: Alignments.Top,
 					transform: TextCapitals.NormalCase,
 					columnStart: columnStart,
 					columnEnd: columnEnd

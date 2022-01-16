@@ -21,7 +21,7 @@
 	$: $activeFile, console.log(JSON.stringify($activeFile, null, 2));
 </script>
 
-<div class="flex-auto w-80 border-r border-l border-base-200 dark:border-base-800 bg-white dark:bg-base-900 mst">
+<div class="flex-none w-80 border-r border-l border-base-200 dark:border-base-800 bg-white dark:bg-base-900 mst">
 	<div class="flex w-full px-4 py-2 items-center justify-between">
 		<h3>Files</h3>
 		<button on:click={() => $newFileForm = {}} class="btn-stealth btn-icon">
@@ -31,8 +31,8 @@
 	<div class="flex flex-col h-full py-2">
 		{#each $files as file (file.id)}
 			<button on:click={setActiveFile(file)} class={fileCss(file)}>
-				<span class="type-focus">{file.meta.fileData.name}</span>
-				<p>{file.meta.fileData.description}</p>
+				<span class="type-focus">{file.meta.name}</span>
+				<p>{file.meta.description}</p>
 			</button>
 		{/each}
 	</div>
