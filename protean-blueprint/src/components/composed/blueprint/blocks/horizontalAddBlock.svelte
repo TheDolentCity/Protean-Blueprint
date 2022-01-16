@@ -8,10 +8,42 @@
 	import { Link, Type, UiChecks, UiRadios } from 'svelte-bootstrap-icons';
 	import { clickOutside } from '$lib/events/clickOutside';
 	import { TextCapitals } from '$lib/enums/textCapitals';
+	import { CssBuilder } from '$lib/builders/cssBuilder';
 
 	export let block;
+	export let columnStart;
 
 	let blockBarVisible;
+
+	$: css = () => {
+		return new CssBuilder()
+			.addClass('group relative flex h-0.5 hover:h-5 focus:h-5 focus-within:h-5 my-1 font-mono justify-center bg-accent-500 dark:bg-accent-700 outline-none mst')
+			.addClass('col-start-1', columnStart === 1)
+			.addClass('col-start-2', columnStart === 2)
+			.addClass('col-start-3', columnStart === 3)
+			.addClass('col-start-4', columnStart === 4)
+			.addClass('col-start-5', columnStart === 5)
+			.addClass('col-start-6', columnStart === 6)
+			.addClass('col-start-7', columnStart === 7)
+			.addClass('col-start-8', columnStart === 8)
+			.addClass('col-start-9', columnStart === 9)
+			.addClass('col-start-10', columnStart === 10)
+			.addClass('col-start-11', columnStart === 11)
+			.addClass('col-start-12', columnStart === 12)
+			.addClass('col-end-1', columnEnd === 1)
+			.addClass('col-end-2', columnEnd === 2)
+			.addClass('col-end-3', columnEnd === 3)
+			.addClass('col-end-4', columnEnd === 4)
+			.addClass('col-end-5', columnEnd === 5)
+			.addClass('col-end-6', columnEnd === 6)
+			.addClass('col-end-7', columnEnd === 7)
+			.addClass('col-end-8', columnEnd === 8)
+			.addClass('col-end-9', columnEnd === 9)
+			.addClass('col-end-10', columnEnd === 10)
+			.addClass('col-end-11', columnEnd === 11)
+			.addClass('col-end-12', columnEnd === 12)
+			.build();
+	};
 
 	const toggleBlockBarVisibility = () => {
 		blockBarVisible = !blockBarVisible;
@@ -28,7 +60,9 @@
 				meta: {
 					type: TextTypes.P,
 					align: TextAlignments.Left,
-					transform: TextCapitals.NormalCase
+					transform: TextCapitals.NormalCase,
+					columnStart: columnStart,
+					columnEnd: columnEnd
 				},
 				content: ""
 			}]
@@ -39,7 +73,7 @@
 </script>
 
 {#if $editing}
-	<button in:fade="{{ duration: 200 }}" out:fade="{{ duration: 200 }}" on:click={toggleBlockBarVisibility} class="group relative col-span-full flex h-0.5 hover:h-5 focus:h-5 focus-within:h-5 my-1 font-mono justify-center bg-accent-500 dark:bg-accent-700 outline-none mst">
+	<button in:fade="{{ duration: 200 }}" out:fade="{{ duration: 200 }}" on:click={toggleBlockBarVisibility} class={css()}>
 		<span class="invisible group-hover:visible group-focus:visible group-focus-within:h-5 py-0.5 text-xs uppercase text-white dark:text-white">
 			Add block
 		</span>

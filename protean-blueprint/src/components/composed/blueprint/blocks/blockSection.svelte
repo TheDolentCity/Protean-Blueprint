@@ -1,15 +1,11 @@
 <script>
+	import { editing } from '$lib/stores/editorStore';
+	import { selectedBlock } from '$lib/stores/fileStore';
 	import { CssBuilder } from '$lib/builders/cssBuilder';
-	import { ColumnTypes } from '$lib/enums/columnTypes';
 	import HorizontalAddBlock from './horizontalAddBlock.svelte';
 	import Block from '../block.svelte';
-	import { editing } from '$lib/stores/editorStore';
-	import { fade } from 'svelte/transition';
-	import { selectedBlock } from '$lib/stores/fileStore';
 
 	export let block;
-
-	$: editBoxVisible = false;
 
 	const isValidBlocks = () => {
 		return block.content && Array.isArray(block.content);
@@ -21,19 +17,10 @@
 
 	$: sectionCss = () => {
 		return new CssBuilder()
-			.addClass('isolation relative grid gap-2 border border-opacity-0 outline-none mst')
+			.addClass('isolation relative grid grid-cols-12 grid-flow-col-dense gap-2 border border-opacity-0 outline-none mst')
 			.addClass('border-opacity-100 border-accent-500 dark:border-accent-700', selected)
-			.addClass('grid-cols-1', block.meta.columns === 1)
-			.addClass('grid-cols-2', block.meta.columns === 2)
-			.addClass('grid-cols-3', block.meta.columns === 3)
-			.addClass('grid-cols-4', block.meta.columns === 4)
 			.build();
 	};
-
-	const select = (e) => {
-		$selectedBlock = block;
-		e.stopImmediatePropagation();
-	}
 
 	const update = () => {
 		if (selected) {
@@ -47,14 +34,16 @@
 
 {#if $editing}
 	<div class={sectionCss()}>
-		<HorizontalAddBlock bind:block />
+		{#each Array(block.meta.columns) as _, i}
+			<HorizontalAddBlock bind:block column={i+1} />
+		{/each}
 		{#if hasNestedBlocks(block)}
 			{#if !isValidBlocks()}
 				<span class="">Error!</span>
 			{:else}
 				{#each block.content as b}
 					<Block bind:block={b} />
-					<HorizontalAddBlock bind:block />
+					<HorizontalAddBlock bind:block column={b.meta.column} />
 				{/each}
 			{/if}
 		{/if}

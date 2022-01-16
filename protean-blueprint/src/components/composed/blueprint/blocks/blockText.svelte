@@ -12,8 +12,32 @@
 
 	$: containerCss = () => {
 		return new CssBuilder()
-			.addClass('isolation group relative flex justify-center border border-opacity-0 outline-none mst')
+			.addClass('isolation group relative col-start-1 flex justify-center border border-opacity-0 outline-none mst')
 			.addClass('border-opacity-100 border-accent-500 dark:border-accent-700', selected)
+			.addClass('col-start-1', block.meta.columnStart === 1)
+			.addClass('col-start-2', block.meta.columnStart === 2)
+			.addClass('col-start-3', block.meta.columnStart === 3)
+			.addClass('col-start-4', block.meta.columnStart === 4)
+			.addClass('col-start-5', block.meta.columnStart === 5)
+			.addClass('col-start-6', block.meta.columnStart === 6)
+			.addClass('col-start-7', block.meta.columnStart === 7)
+			.addClass('col-start-8', block.meta.columnStart === 8)
+			.addClass('col-start-9', block.meta.columnStart === 9)
+			.addClass('col-start-10', block.meta.columnStart === 10)
+			.addClass('col-start-11', block.meta.columnStart === 11)
+			.addClass('col-start-12', block.meta.columnStart === 12)
+			.addClass('col-end-1', block.meta.columnEnd === 1)
+			.addClass('col-end-2', block.meta.columnEnd === 2)
+			.addClass('col-end-3', block.meta.columnEnd === 3)
+			.addClass('col-end-4', block.meta.columnEnd === 4)
+			.addClass('col-end-5', block.meta.columnEnd === 5)
+			.addClass('col-end-6', block.meta.columnEnd === 6)
+			.addClass('col-end-7', block.meta.columnEnd === 7)
+			.addClass('col-end-8', block.meta.columnEnd === 8)
+			.addClass('col-end-9', block.meta.columnEnd === 9)
+			.addClass('col-end-10', block.meta.columnEnd === 10)
+			.addClass('col-end-11', block.meta.columnEnd === 11)
+			.addClass('col-end-12', block.meta.columnEnd === 12)
 			.build();
 	};
 	

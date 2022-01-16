@@ -41,7 +41,23 @@
 			<button on:click={() => $selectedBlock.meta.type = TextTypes.P} class={styleCss(TextTypes.P)}>PA</button>
 		</div>
 	</Accordian>
-	<Accordian title="Alignment" expandCss="p-1">
+	<Accordian title="Horizontal alignment" expandCss="p-1">
+		<div class="flex flex-wrap">
+			<button on:click={() => $selectedBlock.meta.align = TextAlignments.Left} class={alignCss(TextAlignments.Left)}>
+				<TextLeft />
+			</button>
+			<button on:click={() => $selectedBlock.meta.align = TextAlignments.Center} class={alignCss(TextAlignments.Center)}>
+				<TextCenter />
+			</button>
+			<button on:click={() => $selectedBlock.meta.align = TextAlignments.Right} class={alignCss(TextAlignments.Right)}>
+				<TextRight />
+			</button>
+			<button on:click={() => $selectedBlock.meta.align = TextAlignments.Justify} class={alignCss(TextAlignments.Justify)}>
+				<Justify />
+			</button>
+		</div>
+	</Accordian>
+	<Accordian title="Vertical alignment" expandCss="p-1">
 		<div class="flex flex-wrap">
 			<button on:click={() => $selectedBlock.meta.align = TextAlignments.Left} class={alignCss(TextAlignments.Left)}>
 				<TextLeft />

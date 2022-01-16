@@ -29,8 +29,8 @@ import { ColumnTypes } from '$lib/enums/columnTypes';
 	$: columnLabel = (c) => {
 		return new CssBuilder()
 			.addClass('relative flex aspect-[1/1.25] items-center justify-center border mst')
-			.addClass('border-default', fileData.columns !== c)
-			.addClass('border-accent', fileData.columns === c)
+			.addClass('border-default', blockData.columns !== c)
+			.addClass('border-accent', blockData.columns === c)
 			.build();
 		};
 
@@ -103,11 +103,11 @@ import { ColumnTypes } from '$lib/enums/columnTypes';
 					</div>
 				</div>
 				<!-- Document Columns -->
-				<div class="pt-2 pb-1 text-xs uppercase">Columns</div>
+				<!-- <div class="pt-2 pb-1 text-xs uppercase">Columns</div>
 				<div class="grid grid-cols-4 gap-4 w-full text-left">
 					<div class="text-center">
 						<label for="Full" class={columnLabel(1)}>
-							<input type="radio" name="columns" id="Full" bind:group={fileData.columns} value={1} class="appearance-none">
+							<input type="radio" name="columns" id="Full" bind:group={blockData.columns} value={1} class="appearance-none">
 							<div class="grid grid-cols-4 w-full h-full p-2">
 								<span class="col-span-full h-full bg-base-300 dark:bg-base-700 mst"></span>
 							</div>
@@ -116,7 +116,7 @@ import { ColumnTypes } from '$lib/enums/columnTypes';
 					</div>
 					<div class="text-center">
 						<label for="Half" class={columnLabel(2)}>
-							<input type="radio" name="columns" id="Half" bind:group={fileData.columns} value={2} class="appearance-none">
+							<input type="radio" name="columns" id="Half" bind:group={blockData.columns} value={2} class="appearance-none">
 							<div class="grid grid-cols-4 gap-2 w-full h-full p-2">
 								<div class="col-span-2 h-full bg-base-300 dark:bg-base-700 mst"></div>
 								<div class="col-span-2 h-full bg-base-300 dark:bg-base-700 mst"></div>
@@ -126,7 +126,7 @@ import { ColumnTypes } from '$lib/enums/columnTypes';
 					</div>
 					<div class="text-center">
 						<label for="Third" class={columnLabel(3)}>
-							<input type="radio" name="columns" id="Third" bind:group={fileData.columns} value={3} class="appearance-none">
+							<input type="radio" name="columns" id="Third" bind:group={blockData.columns} value={3} class="appearance-none">
 							<div class="grid grid-cols-3 gap-2 w-full h-full p-2">
 								<div class="col-span-1 h-full bg-base-300 dark:bg-base-700 mst"></div>
 								<div class="col-span-1 h-full bg-base-300 dark:bg-base-700 mst"></div>
@@ -137,7 +137,7 @@ import { ColumnTypes } from '$lib/enums/columnTypes';
 					</div>
 					<div class="text-center">
 						<label for="Fourth" class={columnLabel(4)}>
-							<input type="radio" name="columns" id="Fourth" bind:group={fileData.columns} value={4} class="appearance-none">
+							<input type="radio" name="columns" id="Fourth" bind:group={blockData.columns} value={4} class="appearance-none">
 							<div class="grid grid-cols-4 gap-2 w-full h-full p-2">
 								<div class="col-span-1 h-full bg-base-300 dark:bg-base-700 mst"></div>
 								<div class="col-span-1 h-full bg-base-300 dark:bg-base-700 mst"></div>
@@ -147,7 +147,7 @@ import { ColumnTypes } from '$lib/enums/columnTypes';
 						</label>
 						<span class="text-xs">2</span>
 					</div>
-				</div>
+				</div> -->
 			</Accordian>
 		</div>
 		<div class="flex place-self-end p-3 space-x-4 items-stretch">
