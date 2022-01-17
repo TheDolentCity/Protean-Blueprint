@@ -19,7 +19,7 @@ import { Alignments } from '$lib/enums/alignments';
 
 	$: css = () => {
 		return new CssBuilder()
-			.addClass('group relative flex h-0.5 hover:h-5 focus:h-5 focus-within:h-5 my-1 font-mono justify-center bg-accent-500 dark:bg-accent-700 outline-none mst')
+			.addClass('group relative flex h-0.5 hover:h-auto focus:h-auto focus-within:h-auto my-1 font-mono justify-center bg-accent-500 dark:bg-accent-700 outline-none mst')
 			.addClass('col-start-1', columnStart === 1)
 			.addClass('col-start-2', columnStart === 2)
 			.addClass('col-start-3', columnStart === 3)
@@ -79,26 +79,26 @@ import { Alignments } from '$lib/enums/alignments';
 
 {#if $editing}
 	<button in:fade="{{ duration: 200 }}" out:fade="{{ duration: 200 }}" on:click={toggleBlockBarVisibility} class={css()}>
-		<span class="invisible group-hover:visible group-focus:visible group-focus-within:h-5 py-0.5 text-xs uppercase text-white dark:text-white">
+		<div class="invisible group-hover:visible group-focus:visible group-focus-within:h-auto py-0.5 text-xs uppercase text-white dark:text-white">
 			Add block
-		</span>
+		</div>
 		{#if blockBarVisible}
-			<div use:clickOutside on:click_outside={() => blockBarVisible = false} in:fly="{{ y: -50, duration: 200 }}" out:fly="{{ y: -50, duration: 200 }}" class="absolute z-30 top-8 grid grid-cols-4 gap-2 shadow-xl bg-base-50 dark:bg-base-900 border border-base-200 dark:border-base-800">
-				<button on:click={() => createBlock(BlockTypes.Text)} class="btn-stealth btn-icon flex-col justify-center">
+			<div use:clickOutside on:click_outside={() => blockBarVisible = false} in:fly="{{ y: -50, duration: 200 }}" out:fly="{{ y: -50, duration: 200 }}" class="absolute z-30 top-8 flex flex-wrap p-2 justify-center shadow-xl bg-base-50 dark:bg-base-900 border border-base-200 dark:border-base-800">
+				<button on:click={() => createBlock(BlockTypes.Text)} class="btn btn-stealth btn-icon flex-col justify-center">
 					<Type />
-					<span class="mt-1 font-semibold type-focus">Text</span>
+					<div class="mt-1 font-semibold type-focus">Text</div>
 				</button>
-				<button on:click={() => createBlock(BlockTypes.Text)} class="btn-stealth btn-icon flex-col justify-center">
+				<button on:click={() => createBlock(BlockTypes.Text)} class="btn btn-stealth btn-icon flex-col justify-center">
 					<Link />
-					<span class="mt-1 font-semibold type-focus">Link</span>
+					<div class="mt-1 font-semibold type-focus">Link</div>
 				</button>
-				<button on:click={() => createBlock(BlockTypes.Text)} class="btn-stealth btn-icon flex-col justify-center">
+				<button on:click={() => createBlock(BlockTypes.Text)} class="btn btn-stealth btn-icon flex-col justify-center">
 					<UiChecks />
-					<span class="mt-1 font-semibold type-focus">Checks</span>
+					<div class="mt-1 font-semibold type-focus">Checks</div>
 				</button>
-				<button on:click={() => createBlock(BlockTypes.Text)} class="btn-stealth btn-icon flex-col justify-center">
+				<button on:click={() => createBlock(BlockTypes.Text)} class="btn btn-stealth btn-icon flex-col justify-center">
 					<UiRadios />
-					<span class="mt-1 font-semibold type-focus">Radio</span>
+					<div class="mt-1 font-semibold type-focus">Radio</div>
 				</button>
 			</div>
 		{/if}

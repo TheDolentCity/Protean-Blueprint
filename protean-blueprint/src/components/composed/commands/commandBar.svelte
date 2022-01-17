@@ -1,5 +1,6 @@
 <script>
 	import BrightnessCommand from './brightnessCommand.svelte';
+	import ClearLocalStorageCommand from './clearLocalStorageCommand.svelte';
 	import EditCommand from './editCommand.svelte';
 	import LockCommand from './lockCommand.svelte';
 </script>
@@ -8,4 +9,5 @@
 	<BrightnessCommand />
 	<EditCommand />
 	<LockCommand />
+	<ClearLocalStorageCommand />
 </div>

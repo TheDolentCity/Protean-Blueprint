@@ -41,12 +41,10 @@ import BlockRoot from './blocks/blockRoot.svelte';
 			</div>
 		</div>
 	</div>
-{:else}
+{:else if $activeFile}
 	<div in:fly="{{ y: -50, duration: 200 }}" out:fly="{{ y: -50, duration: 200 }}" class="flex-grow flex h-full max-h-full px-12 py-8 items-center justify-center">
 		<div class={blueprintCss()}>
-			{#if $activeFile}
-				<BlockRoot bind:block={$activeFile} />
-			{/if}
+			<BlockRoot bind:block={$activeFile} />
 		</div>
 	</div>
 {/if}

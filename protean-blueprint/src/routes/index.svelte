@@ -9,7 +9,9 @@
     <title>Blueprint</title>
 </svelte:head>
 
-<CommandBar />
-<FileExplorer />
+<div class="flex">
+	<CommandBar />
+	<FileExplorer />
+</div>
 <Blueprint />
 <BlockEditor />

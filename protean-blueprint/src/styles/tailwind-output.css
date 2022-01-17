@@ -1306,10 +1306,6 @@ textarea:focus{
   align-items: stretch;
 }
 
-.justify-start{
-  justify-content: flex-start;
-}
-
 .justify-center{
   justify-content: center;
 }
@@ -1748,12 +1744,12 @@ textarea:focus{
   content: var(--tw-content);
 }
 
-.focus-within\:h-5:focus-within{
-  height: 1.25rem;
+.focus-within\:h-auto:focus-within{
+  height: auto;
 }
 
-.hover\:h-5:hover{
-  height: 1.25rem;
+.hover\:h-auto:hover{
+  height: auto;
 }
 
 .hover\:bg-zinc-900:hover{
@@ -1855,8 +1851,8 @@ textarea:focus{
   --tw-bg-opacity: 0.05;
 }
 
-.focus\:h-5:focus{
-  height: 1.25rem;
+.focus\:h-auto:focus{
+  height: auto;
 }
 
 .focus\:raise-10:focus{
@@ -1875,8 +1871,8 @@ textarea:focus{
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-.group:focus-within .group-focus-within\:h-5{
-  height: 1.25rem;
+.group:focus-within .group-focus-within\:h-auto{
+  height: auto;
 }
 
 .group:hover .group-hover\:visible{

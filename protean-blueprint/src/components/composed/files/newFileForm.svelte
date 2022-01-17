@@ -49,6 +49,7 @@
 				content: []
 			}];
 		$newFileForm = null;
+		localStorage.setItem("files", JSON.stringify($files));
 	}
 </script>
 
