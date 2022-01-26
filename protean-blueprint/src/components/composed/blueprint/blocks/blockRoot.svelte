@@ -34,14 +34,14 @@
 
 {#if $editing}
 	<div class={css()}>
-		<HorizontalAddBlock bind:block columnStart={1} columnEnd={13} />
+		<HorizontalAddBlock bind:block position={0} columnStart={1} columnEnd={13} />
 		{#if hasNestedBlocks(block)}
 			{#if !isValidBlocks()}
 				<span class="">Error!</span>
 			{:else}
-				{#each block.content as b}
+				{#each block.content as b,i}
 					<Block bind:block={b} />
-					<HorizontalAddBlock bind:block columnStart={b.meta.columnStart} columnEnd={b.meta.columnEnd} />
+					<HorizontalAddBlock bind:block position={i+1} columnStart={b.meta.columnStart} columnEnd={b.meta.columnEnd} />
 				{/each}
 			{/if}
 		{/if}

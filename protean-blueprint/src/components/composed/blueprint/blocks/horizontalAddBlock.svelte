@@ -12,6 +12,7 @@
 import { Alignments } from '$lib/enums/alignments';
 
 	export let block;
+	export let position;
 	export let columnStart;
 	export let columnEnd;
 
@@ -56,21 +57,24 @@ import { Alignments } from '$lib/enums/alignments';
 	const createBlock = (type) => {
 		// console.log("Block1\n" + JSON.stringify(block, null, 2));
 		// console.log("Content1\n" + JSON.stringify(block.content, null, 2));
+		let newBlock = {
+			id: uuidv4(),
+			type: BlockTypes.Text,
+			meta: {
+				type: TextTypes.P,
+				alignHorizontal: Alignments.Start,
+				alignVertical: Alignments.Top,
+				transform: TextCapitals.NormalCase,
+				columnStart: columnStart,
+				columnEnd: columnEnd
+			},
+			content: ""
+		};
+		let content = [...block.content];
+		content.splice(position, 0, newBlock);
+
 		block = { ...block,
-			content: [...block.content,
-			{
-				id: uuidv4(),
-				type: BlockTypes.Text,
-				meta: {
-					type: TextTypes.P,
-					alignHorizontal: Alignments.Start,
-					alignVertical: Alignments.Top,
-					transform: TextCapitals.NormalCase,
-					columnStart: columnStart,
-					columnEnd: columnEnd
-				},
-				content: ""
-			}]
+			content: content
 		};
 		// console.log("Block2\n" + JSON.stringify(block, null, 2));
 		// console.log("Content2\n" + JSON.stringify(block.content, null, 2));

@@ -1,6 +1,7 @@
 <script>
 	import { v4 as uuidv4 } from 'uuid';
 	import { autoresize } from 'svelte-textarea-autoresize';
+  import { focusTrap } from 'svelte-focus-trap'
 	import { files, newFileForm } from '$lib/stores/fileStore';
 	import { BlockTypes } from '$lib/enums/blockTypes';
 	import { DocumentSize } from '$lib/enums/documentSize';
@@ -54,7 +55,7 @@
 </script>
 
 {#if $newFileForm !== null}
-	<form class="flex flex-col w-full h-full bg-white dark:bg-base-900 mst">
+	<form use:focusTrap class="flex flex-col w-full h-full bg-white dark:bg-base-900 mst">
 		<div class="flex-grow flex flex-col overflow-y-auto">
 			<Accordian title="File details" open={true} expandCss="flex flex-col px-3 pt-2 pb-4 space-y-2">
 				<label class="">
@@ -71,18 +72,18 @@
 				<div class="pt-2 pb-1 text-xs uppercase">Document size</div>
 				<div class="grid grid-cols-4 gap-4 w-full text-left">
 					<div class="text-center">
-						<label for="A4" class={sizeLabel(DocumentSize.A4)}>
-							<input type="radio" name="documentSize" id="A4" bind:group={meta.documentSize} value={DocumentSize.A4} class="appearance-none">
-							<span>{DocumentSize.A4.name}</span>
-						</label>
-						<span class="text-xs">1 : 1.4142</span>
-					</div>
-					<div class="text-center">
 						<label for="Letter" class={sizeLabel(DocumentSize.Letter)}>
 							<input type="radio" name="documentSize" id="Letter" bind:group={meta.documentSize} value={DocumentSize.Letter} class="appearance-none">
 							<span>{DocumentSize.Letter.name}</span>
 						</label>
 						<span class="text-xs">1 : 1.2941</span>
+					</div>
+					<div class="text-center">
+						<label for="A4" class={sizeLabel(DocumentSize.A4)}>
+							<input type="radio" name="documentSize" id="A4" bind:group={meta.documentSize} value={DocumentSize.A4} class="appearance-none">
+							<span>{DocumentSize.A4.name}</span>
+						</label>
+						<span class="text-xs">1 : 1.4142</span>
 					</div>
 					<div class="text-center">
 						<label for="Poster" class={sizeLabel(DocumentSize.Poster)}>

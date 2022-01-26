@@ -5,9 +5,8 @@
 	import { editing, locked } from '$lib/stores/editorStore';
 	import { CssBuilder } from '$lib/builders/cssBuilder';
 	import { TextTypes } from '$lib/enums/textTypes';
-	import { TextAlignments } from '$lib/enums/textAlignments';
 	import { TextCapitals } from '$lib/enums/textCapitals';
-import { Alignments } from '$lib/enums/alignments';
+	import { Alignments } from '$lib/enums/alignments';
 
 	export let block;
 

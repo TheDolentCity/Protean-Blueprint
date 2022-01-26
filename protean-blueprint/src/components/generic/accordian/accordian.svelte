@@ -8,7 +8,7 @@
 </script>
 
 <div class="">
-	<button type="button" on:click={() => open = !open} class="flex w-full p-1 items-center border-t border-base-200 dark:border-base-800 mst">
+	<button type="button" on:click={() => open = !open} class="flex w-full p-1 items-center border-t border-base-200 dark:border-base-800 focus:ring-2 focus:ring-inset focus:ring-accent-700 outline-none mst">
 		<span class="mr-2 type-focus">
 			{#if open}
 				<CaretDownFill />
